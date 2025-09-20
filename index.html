@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>United Fabricators</title>
   <meta name="description" content="United Fabricators - Built on Trust, Crafted with Excellence. Specialists in Fabrication, Welding, Machining, Hydraulic Press Jobs, Gear Extraction and more.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,11 +29,16 @@
       left: 0;
       width: 100%;
       padding: 15px 50px;
-      z-index: 1000;
+      z-index: 1001;
       border-radius: 0 0 8px 8px;
       backdrop-filter: blur(8px); 
-      background: rgba(30, 91, 184, 0.3); /* transparent navbar */
+      background: rgba(30, 91, 184, 0.3);
       box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      transition: background 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(30,91,184,0.85);
     }
 
     .nav-container {
@@ -79,7 +92,7 @@
 
     /* Hero Section */
     .hero {
-      height: 100vh;
+      height: min(100vh, 100vw); /* Square-ish on phone */
       width: 100%;
       background: url('united-fabricators-background.jpg') no-repeat center top;
       background-size: cover;
@@ -163,7 +176,7 @@
       border-radius: 2px;
     }
 
-    /* Services Offered - Centered grid */
+    /* Services Offered */
     #services .works {
       display: flex;
       flex-wrap: wrap;
@@ -180,6 +193,11 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
+      transition: transform 0.3s;
+    }
+
+    #services .work-box:hover {
+      transform: translateY(-5px);
     }
 
     .work-box h3 {
@@ -199,18 +217,39 @@
       border-radius: 8px;
       margin-top: 10px;
       transition: transform 0.3s;
+      loading: lazy;
     }
 
     .work-box img:hover {
       transform: scale(1.05);
     }
 
-    /* Our Works grid */
+    /* Our Works */
     #works .works {
       display: flex;
       flex-direction: column;
       gap: 30px;
       margin-top: 40px;
+    }
+
+    #works .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    #works .image-grid img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 0.3s;
+      loading: lazy;
+    }
+
+    #works .image-grid img:hover {
+      transform: scale(1.05);
     }
 
     /* Contact */
@@ -296,6 +335,7 @@
         right: 20px;
         padding: 10px 20px;
         border-radius: 8px;
+        z-index: 1002;
       }
 
       nav.active {
@@ -307,7 +347,6 @@
       }
 
       .hero {
-        height: 80vh;
         background-position: 75% 20%;
       }
 
@@ -321,7 +360,6 @@
         align-items: center;
       }
       .hero {
-        height: 75vh;
         background-position: 70% 20%;
       }
       .hero h1 { font-size: 38px; }
@@ -366,31 +404,27 @@
       <div class="work-box">
         <h3>Fabrication</h3>
         <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
-        <img src="fabrication1.jpg" alt="Fabrication Service">
+        <img src="fabrication1.jpg" alt="Fabrication Service" loading="lazy">
       </div>
-
       <div class="work-box">
         <h3>Bending</h3>
         <p>We specialize in bending plates, pipes, angles, and channels with precision.</p>
-        <img src="bending1.jpg" alt="Bending Service">
+        <img src="bending1.jpg" alt="Bending Service" loading="lazy">
       </div>
-
       <div class="work-box">
         <h3>Welding (X-Ray & UT Certified)</h3>
         <p>MIG, TIG, and Stick welding. Our work is X-Ray (Radiographic) and UT (Ultrasonic) certified.</p>
-        <img src="welding1.jpg" alt="Welding Service">
+        <img src="welding1.jpg" alt="Welding Service" loading="lazy">
       </div>
-
       <div class="work-box">
         <h3>Machining</h3>
         <p>High precision machining services for industrial needs with guaranteed accuracy.</p>
-        <img src="machining1.jpg" alt="Machining Service">
+        <img src="machining1.jpg" alt="Machining Service" loading="lazy">
       </div>
-
       <div class="work-box">
         <h3>Assembly & Disassembly</h3>
         <p>We remove broken gears, couplings, pinions, or damaged shafts, repair or replace them, and reassemble machinery for smooth operation.</p>
-        <img src="assembly1.jpg" alt="Assembly Service">
+        <img src="assembly1.jpg" alt="Assembly Service" loading="lazy">
       </div>
     </div>
   </section>
@@ -402,23 +436,26 @@
       <div class="work-box">
         <h3>Fabrication Jobs</h3>
         <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
-        <img src="fabrication1.jpg" alt="Fabrication Job">
-        <img src="fabrication2.jpg" alt="Fabrication Job">
-        <img src="fabrication3.jpg" alt="Fabrication Job">
-        <img src="fabrication4.jpg" alt="Fabrication Job">
-        <img src="fabrication5.jpg" alt="Fabrication Job">
-        <img src="fabrication6.jpg" alt="Fabrication Job">
+        <div class="image-grid">
+          <img src="fabrication1.jpg" alt="Fabrication Job" loading="lazy">
+          <img src="fabrication2.jpg" alt="Fabrication Job" loading="lazy">
+          <img src="fabrication3.jpg" alt="Fabrication Job" loading="lazy">
+          <img src="fabrication4.jpg" alt="Fabrication Job" loading="lazy">
+          <img src="fabrication5.jpg" alt="Fabrication Job" loading="lazy">
+          <img src="fabrication6.jpg" alt="Fabrication Job" loading="lazy">
+        </div>
       </div>
-
       <div class="work-box">
         <h3>Bending Jobs</h3>
         <p>We specialize in bending plates, pipes, angles, and channels with precision.</p>
-        <img src="bending1.jpg" alt="Bending Job">
-        <img src="bending2.jpg" alt="Bending Job">
-        <img src="bending3.jpg" alt="Bending Job">
-        <img src="bending4.jpg" alt="Bending Job">
-        <img src="bending5.jpg" alt="Bending Job">
-        <img src="bending6.jpg" alt="Bending Job">
+        <div class="image-grid">
+          <img src="bending1.jpg" alt="Bending Job" loading="lazy">
+          <img src="bending2.jpg" alt="Bending Job" loading="lazy">
+          <img src="bending3.jpg" alt="Bending Job" loading="lazy">
+          <img src="bending4.jpg" alt="Bending Job" loading="lazy">
+          <img src="bending5.jpg" alt="Bending Job" loading="lazy">
+          <img src="bending6.jpg" alt="Bending Job" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
@@ -448,11 +485,11 @@
   <!-- Request a Quote -->
   <section id="quote">
     <h2>Request a Quote</h2>
-    <form class="quote-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <input type="tel" placeholder="Your Phone" required>
-      <textarea placeholder="Your Requirements" rows="5" required></textarea>
+    <form class="quote-form" action="mailto:united.fabricators@yahoo.in" method="POST" enctype="text/plain">
+      <input type="text" placeholder="Your Name" name="name" required>
+      <input type="email" placeholder="Your Email" name="email" required>
+      <input type="tel" placeholder="Your Phone" name="phone" required>
+      <textarea placeholder="Your Requirements" name="requirements" rows="5" required></textarea>
       <button type="submit">Submit</button>
     </form>
   </section>
@@ -466,6 +503,11 @@
     function toggleMenu() {
       document.getElementById('navbar').classList.toggle('active');
     }
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
   </script>
 
 </body>
