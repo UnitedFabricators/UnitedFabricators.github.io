@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>United Fabricators</title>
   <meta name="description" content="United Fabricators - Built on Trust, Crafted with Excellence. Specialists in Fabrication, Welding, Machining, Hydraulic Press Jobs, Gear Extraction and more.">
+  <meta name="keywords" content="fabrication, welding, machining, hydraulic press, Howrah">
+  <link rel="icon" href="favicon.ico">
   <style>
     body {
       margin: 0;
@@ -14,28 +16,50 @@
       line-height: 1.6;
     }
 
-    /* Navigation */
+    /* Header */
     header {
-      position: fixed;
+      position: sticky;
       top: 0;
       left: 0;
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 15px 50px;
+      padding: 8px 40px;
       z-index: 1000;
-      background: rgba(30, 91, 184, 0.8); /* semi-transparent */
-      backdrop-filter: blur(5px); /* subtle blur */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* shadow below navbar */
+      background: rgba(30, 91, 184, 0.9);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
       border-radius: 0 0 15px 15px;
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Shrink header on scroll */
+    header.shrink {
+      padding: 5px 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .logo {
+      color: white;
+      font-weight: bold;
+      font-size: 22px;
+      white-space: nowrap;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     header nav a {
-      margin: 0 18px;
+      flex-shrink: 0;
       text-decoration: none;
       font-weight: 600;
-      padding: 10px 18px;
+      padding: 8px 15px;
       border-radius: 8px;
       transition: all 0.3s ease;
       color: white;
@@ -44,20 +68,85 @@
 
     header nav a:hover {
       background-color: rgba(255, 255, 255, 0.15);
-      color: #ffd700; /* gold highlight */
-      transform: translateY(-2px);
+      color: #ffd700;
+      transform: translateY(-2px) scale(1.05);
     }
 
     header nav a.active {
       background-color: rgba(255, 255, 255, 0.25);
       color: #ffd700;
+      transform: scale(1.05);
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hamburger animation when open */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    @media(max-width:1024px){
+      nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+    }
+
+    @media(max-width:768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: rgba(30,91,184,0.95);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        border-radius: 10px;
+        padding: 15px;
+        width: 220px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      }
+
+      nav.show {
+        display: flex;
+        animation: slideDown 0.4s ease;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     /* Hero Section */
     .hero {
       height: 100vh;
       width: 100%;
-      background: url('united-fabricators-background.jpg') no-repeat center top;
+      background: url('united-fabricators-background.jpg') no-repeat center top fixed;
       background-size: cover;
       display: flex;
       justify-content: center;
@@ -86,18 +175,6 @@
       font-size: 20px;
       letter-spacing: 3px;
       margin-bottom: 10px;
-      color: white;
-      position: relative;
-    }
-
-    .hero h2::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: #1e5bb8;
-      margin: 8px auto 0;
-      border-radius: 2px;
     }
 
     .hero h1 {
@@ -124,7 +201,8 @@
     section h2 {
       text-align: center;
       color: #1e5bb8;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
+      font-size: 32px;
       position: relative;
       display: inline-block;
     }
@@ -139,19 +217,13 @@
       border-radius: 2px;
     }
 
-    .works {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
+    /* Works Slider - fade effect */
     .work-box {
       background: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
+      margin-bottom: 40px;
     }
 
     .work-box h3 {
@@ -159,18 +231,46 @@
       margin-bottom: 10px;
     }
 
-    .work-box img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-top: 10px;
-      transition: transform 0.3s;
+    .slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      height: 250px;
     }
 
-    .work-box img:hover {
-      transform: scale(1.05);
+    .slides img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
+
+    .slides img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 20px;
+      z-index: 2;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
 
     /* Contact */
     .contact-info {
@@ -232,27 +332,13 @@
       margin-top: 50px;
     }
 
-    /* Responsive & Mobile Adjustments */
+    /* Responsive & Mobile */
     @media(max-width:768px) {
-      header nav {
-        display: none; /* hide navigation on mobile */
-      }
-
-      .hero {
-        height: 80vh;
-        background-position: 75% 20%; /* slight right shift, top cropped */
-      }
-
       .hero h1 { font-size: 40px; }
       .hero p { font-size: 16px; }
     }
 
     @media(max-width:480px) {
-      .hero {
-        height: 75vh;
-        background-position: 70% 20%; /* more right shift, top crop */
-      }
-
       .hero h1 { font-size: 38px; }
       .hero p { font-size: 15px; }
     }
@@ -262,8 +348,12 @@
 
   <!-- Header -->
   <header>
-    <nav>
-      <a href="#home">Home</a>
+    <div class="logo">United Fabricators</div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <nav id="nav">
+      <a href="#home" class="active">Home</a>
       <a href="#works">Our Works</a>
       <a href="#contact">Contact</a>
       <a href="#map">Location</a>
@@ -283,52 +373,82 @@
   <!-- Our Works -->
   <section id="works">
     <h2>Our Works</h2>
-    <div class="works">
-      <div class="work-box">
-        <h3>Fabrication Jobs</h3>
-        <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
-        <img src="fabrication1.jpg" alt="">
-        <img src="fabrication2.jpg" alt="">
-        <img src="fabrication3.jpg" alt="">
-        <img src="fabrication4.jpg" alt="">
-      </div>
 
-      <div class="work-box">
-        <h3>Bending Jobs</h3>
-        <p>We specialize in bending plates, pipes, angles, and channels with precision.</p>
-        <img src="bending1.jpg" alt="">
-        <img src="bending2.jpg" alt="">
-        <img src="bending3.jpg" alt="">
-        <img src="bending4.jpg" alt="">
-      </div>
-
-      <div class="work-box">
-        <h3>Welding</h3>
-        <p>MIG, TIG, and Stick welding. Our work is X-Ray (Radiographic) and UT (Ultrasonic) certified.</p>
-        <img src="welding1.jpg" alt="">
-        <img src="welding2.jpg" alt="">
-        <img src="welding3.jpg" alt="">
-        <img src="welding4.jpg" alt="">
-      </div>
-
-      <div class="work-box">
-        <h3>Machining Jobs</h3>
-        <p>High precision machining services for industrial needs with guaranteed accuracy.</p>
-        <img src="machining1.jpg" alt="">
-        <img src="machining2.jpg" alt="">
-        <img src="machining3.jpg" alt="">
-        <img src="machining4.jpg" alt="">
-      </div>
-
-      <div class="work-box">
-        <h3>Hydraulic Press & Gear Extraction</h3>
-        <p>We extract broken gears from shafts and fit new ones using our hydraulic press. Reliable and accurate solutions for your machinery.</p>
-        <img src="gear1.jpg" alt="">
-        <img src="gear2.jpg" alt="">
-        <img src="gear3.jpg" alt="">
-        <img src="gear4.jpg" alt="">
+    <div class="work-box">
+      <h3>Fabrication Jobs</h3>
+      <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
+      <div class="slider">
+        <div class="slides">
+          <img src="fabrication1.jpg" class="active" alt="">
+          <img src="fabrication2.jpg" alt="">
+          <img src="fabrication3.jpg" alt="">
+          <img src="fabrication4.jpg" alt="">
+        </div>
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
       </div>
     </div>
+
+    <div class="work-box">
+      <h3>Bending Jobs</h3>
+      <p>We specialize in bending plates, pipes, angles, and channels with precision.</p>
+      <div class="slider">
+        <div class="slides">
+          <img src="bending1.jpg" class="active" alt="">
+          <img src="bending2.jpg" alt="">
+          <img src="bending3.jpg" alt="">
+          <img src="bending4.jpg" alt="">
+        </div>
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <h3>Welding</h3>
+      <p>MIG, TIG, and Stick welding. Our work is X-Ray (Radiographic) and UT (Ultrasonic) certified.</p>
+      <div class="slider">
+        <div class="slides">
+          <img src="welding1.jpg" class="active" alt="">
+          <img src="welding2.jpg" alt="">
+          <img src="welding3.jpg" alt="">
+          <img src="welding4.jpg" alt="">
+        </div>
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <h3>Machining Jobs</h3>
+      <p>High precision machining services for industrial needs with guaranteed accuracy.</p>
+      <div class="slider">
+        <div class="slides">
+          <img src="machining1.jpg" class="active" alt="">
+          <img src="machining2.jpg" alt="">
+          <img src="machining3.jpg" alt="">
+          <img src="machining4.jpg" alt="">
+        </div>
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <h3>Hydraulic Press & Gear Extraction</h3>
+      <p>We extract broken gears from shafts and fit new ones using our hydraulic press. Reliable and accurate solutions for your machinery.</p>
+      <div class="slider">
+        <div class="slides">
+          <img src="gear1.jpg" class="active" alt="">
+          <img src="gear2.jpg" alt="">
+          <img src="gear3.jpg" alt="">
+          <img src="gear4.jpg" alt="">
+        </div>
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+      </div>
+    </div>
+
   </section>
 
   <!-- Contact -->
@@ -369,6 +489,53 @@
   <footer>
     <p>&copy; 2025 United Fabricators. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('show');
+      hamburger.classList.toggle('active');
+    });
+
+    // Shrink header on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
+
+    // Sliders for each work box
+    document.querySelectorAll('.slider').forEach(slider => {
+      const slides = slider.querySelectorAll('img');
+      const prev = slider.querySelector('.prev');
+      const next = slider.querySelector('.next');
+      let index = 0;
+
+      function showSlide(i) {
+        index = (i + slides.length) % slides.length;
+        slides.forEach((img, idx) => {
+          img.classList.toggle('active', idx === index);
+        });
+      }
+
+      prev.addEventListener('click', () => { showSlide(index - 1); resetAutoSlide(); });
+      next.addEventListener('click', () => { showSlide(index + 1); resetAutoSlide(); });
+
+      let autoSlide = setInterval(() => { showSlide(index + 1); }, 4000);
+
+      function resetAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => { showSlide(index + 1); }, 4000);
+      }
+
+      showSlide(0);
+    });
+  </script>
 
 </body>
 </html>
