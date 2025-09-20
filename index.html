@@ -76,11 +76,9 @@ header nav a:hover {
 .hamburger.active div:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
-
 .hamburger.active div:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger.active div:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
@@ -269,10 +267,17 @@ footer {
   margin-top: 50px;
 }
 
-/* Responsive */
+/* Mobile adjustments */
 @media(max-width:768px) {
   .hero h1 { font-size: 40px; }
   .hero p { font-size: 16px; }
+
+  /* Smaller nav text for mobile */
+  header nav a {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
   .work-box img { width: 48%; margin: 1%; }
 
   .hamburger { display: flex; }
@@ -284,13 +289,18 @@ footer {
     text-align: center;
   }
   header nav.show { display: flex; }
-  header nav a { padding: 15px 0; border-bottom: 1px solid #154a91; }
+  header nav a { padding: 12px 0; border-bottom: 1px solid #154a91; }
+
+  /* Shift hero background to the right slightly */
+  .hero {
+    background-position: right top;
+  }
 }
 
 @media(max-width:480px) {
   .hero {
     height: 80vh;
-    background-position: center top;
+    background-position: right top;
   }
   .hero h1 { font-size: 32px; }
   .hero h2 { font-size: 16px; }
