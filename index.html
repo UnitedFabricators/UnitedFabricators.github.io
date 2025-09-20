@@ -20,11 +20,12 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: linear-gradient(90deg, #1e5bb8, #3a7bd5);
       padding: 15px 50px;
       z-index: 1000;
       border-radius: 0 0 8px 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px); 
+      background: rgba(30, 91, 184, 0.3); /* transparent navbar */
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
     }
 
     .nav-container {
@@ -49,14 +50,16 @@
     }
 
     nav a:hover {
-      background-color: rgba(255,255,255,0.2);
+      background-color: rgba(255, 255, 255, 0.25);
       color: #ffd700;
       transform: translateY(-2px);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     }
 
     nav a.active {
-      background-color: rgba(255,255,255,0.25);
+      background-color: rgba(255,255,255,0.3);
       color: #ffd700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     }
 
     /* Hamburger */
@@ -160,19 +163,18 @@
       border-radius: 2px;
     }
 
-    /* Services Offered Grid */
+    /* Services Offered - Centered grid */
     #services .works {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 30px;
       margin-top: 40px;
     }
 
-    #services .work-box:nth-child(n+4) {
-      grid-column: span 1;
-    }
-
-    .work-box {
+    #services .work-box {
+      flex: 1 1 300px;
+      max-width: 350px;
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -201,6 +203,14 @@
 
     .work-box img:hover {
       transform: scale(1.05);
+    }
+
+    /* Our Works grid */
+    #works .works {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 40px;
     }
 
     /* Contact */
@@ -272,7 +282,7 @@
     /* Responsive */
     @media(max-width:1024px) {
       #services .works {
-        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
       }
     }
 
@@ -280,7 +290,7 @@
       nav {
         display: none;
         flex-direction: column;
-        background: #1e5bb8;
+        background: rgba(30,91,184,0.8);
         position: absolute;
         top: 60px;
         right: 20px;
@@ -307,7 +317,8 @@
 
     @media(max-width:480px) {
       #services .works {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
       }
       .hero {
         height: 75vh;
@@ -377,8 +388,8 @@
       </div>
 
       <div class="work-box">
-        <h3>Assembly & Disassembly of Machine Components</h3>
-        <p>We can remove broken gears, couplings, pinions, or damaged shafts, repair or replace them, and reassemble machinery for smooth operation.</p>
+        <h3>Assembly & Disassembly</h3>
+        <p>We remove broken gears, couplings, pinions, or damaged shafts, repair or replace them, and reassemble machinery for smooth operation.</p>
         <img src="assembly1.jpg" alt="Assembly Service">
       </div>
     </div>
