@@ -8,6 +8,8 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
   <style>
     html {
@@ -50,6 +52,7 @@
     nav {
       display: flex;
       gap: 20px;
+      transition: all 0.3s ease;
     }
 
     nav a {
@@ -92,8 +95,8 @@
 
     /* Hero Section */
     .hero {
-      height: min(100vh, 100vw); /* Square-ish on phone */
       width: 100%;
+      aspect-ratio: 1 / 1; /* Perfect square */
       background: url('united-fabricators-background.jpg') no-repeat center top;
       background-size: cover;
       display: flex;
@@ -142,6 +145,11 @@
       font-weight: bold;
       color: #ffd700;
       margin: 0;
+      transition: color 0.3s ease;
+    }
+
+    .hero h1:hover {
+      color: #fff176;
     }
 
     .hero p {
@@ -164,6 +172,7 @@
       margin-bottom: 20px;
       position: relative;
       display: inline-block;
+      transition: color 0.3s ease;
     }
 
     section h2::after {
@@ -174,6 +183,10 @@
       background: #1e5bb8;
       margin: 8px auto 0;
       border-radius: 2px;
+    }
+
+    section h2:hover {
+      color: #154a91;
     }
 
     /* Services Offered */
@@ -203,6 +216,11 @@
     .work-box h3 {
       color: #1e5bb8;
       margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .work-box h3:hover {
+      color: #154a91;
     }
 
     .work-box p {
@@ -304,6 +322,7 @@
       cursor: pointer;
       border-radius: 5px;
       font-size: 16px;
+      transition: background 0.3s;
     }
 
     .quote-form button:hover {
@@ -336,10 +355,14 @@
         padding: 10px 20px;
         border-radius: 8px;
         z-index: 1002;
+        opacity: 0;
+        visibility: hidden;
       }
 
       nav.active {
         display: flex;
+        opacity: 1;
+        visibility: visible;
       }
 
       .hamburger {
@@ -364,6 +387,10 @@
       }
       .hero h1 { font-size: 38px; }
       .hero p { font-size: 15px; }
+
+      #works .image-grid img {
+        height: 100px;
+      }
     }
   </style>
 </head>
@@ -404,27 +431,27 @@
       <div class="work-box">
         <h3>Fabrication</h3>
         <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
-        <img src="fabrication1.jpg" alt="Fabrication Service" loading="lazy">
+        <img src="service_fabrication.jpg" alt="Fabrication Service" loading="lazy">
       </div>
       <div class="work-box">
         <h3>Bending</h3>
         <p>We specialize in bending plates, pipes, angles, and channels with precision.</p>
-        <img src="bending1.jpg" alt="Bending Service" loading="lazy">
+        <img src="service_bending.jpg" alt="Bending Service" loading="lazy">
       </div>
       <div class="work-box">
         <h3>Welding (X-Ray & UT Certified)</h3>
         <p>MIG, TIG, and Stick welding. Our work is X-Ray (Radiographic) and UT (Ultrasonic) certified.</p>
-        <img src="welding1.jpg" alt="Welding Service" loading="lazy">
+        <img src="service_welding.jpg" alt="Welding Service" loading="lazy">
       </div>
       <div class="work-box">
         <h3>Machining</h3>
         <p>High precision machining services for industrial needs with guaranteed accuracy.</p>
-        <img src="machining1.jpg" alt="Machining Service" loading="lazy">
+        <img src="service_machining.jpg" alt="Machining Service" loading="lazy">
       </div>
       <div class="work-box">
         <h3>Assembly & Disassembly</h3>
         <p>We remove broken gears, couplings, pinions, or damaged shafts, repair or replace them, and reassemble machinery for smooth operation.</p>
-        <img src="assembly1.jpg" alt="Assembly Service" loading="lazy">
+        <img src="service_assembly.jpg" alt="Assembly Service" loading="lazy">
       </div>
     </div>
   </section>
@@ -508,7 +535,3 @@
       const header = document.querySelector('header');
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
-  </script>
-
-</body>
-</html>
