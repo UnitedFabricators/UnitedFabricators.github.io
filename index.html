@@ -109,7 +109,6 @@
       overflow: hidden;
     }
 
-    /* dark overlay */
     .hero::after {
       content: "";
       position: absolute;
@@ -119,7 +118,6 @@
       z-index: 1;
     }
 
-    /* slideshow container (behind content) */
     .slideshow {
       position: absolute;
       top: 0;
@@ -140,7 +138,6 @@
       left: 0;
       opacity: 0;
       transition: opacity 1.6s ease-in-out, transform 0.2s linear;
-      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
     }
 
@@ -187,7 +184,6 @@
       color: #ddd;
     }
 
-    /* Fade-up animation */
     @keyframes fadeInUp {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -243,67 +239,39 @@
       transform: translateY(-5px);
     }
 
-    .work-box h3 {
-      color: #1e5bb8;
-      margin-bottom: 10px;
-    }
-
-    .work-box p {
-      font-size: 16px;
-      color: #555;
-    }
-
-    .work-box img {
-      width: 100%;
-      max-height: 280px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-top: 10px;
-      transition: transform 0.3s;
-      loading: lazy;
-    }
-
-    .work-box img:hover {
-      transform: scale(1.05);
-    }
+    .work-box h3 { color: #1e5bb8; margin-bottom: 10px; }
+    .work-box p { font-size: 16px; color: #555; }
+    .work-box img { width: 100%; max-height: 280px; object-fit: cover; border-radius: 8px; margin-top: 10px; transition: transform 0.3s; }
+    .work-box img:hover { transform: scale(1.05); }
 
     /* Our Works */
-    #works .works {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      margin-top: 40px;
-    }
+    #works .works { display: flex; flex-direction: column; gap: 30px; margin-top: 40px; }
+    #works .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 15px; }
+    #works .image-grid img { width: 100%; height: 120px; object-fit: cover; border-radius: 6px; transition: transform 0.3s; }
+    #works .image-grid img:hover { transform: scale(1.05); }
 
-    #works .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    #works .image-grid img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 6px;
-      transition: transform 0.3s;
-      loading: lazy;
-    }
-
-    #works .image-grid img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Contact */
-    .contact-info {
+    /* Contact Box */
+    .contact-box {
+      max-width: 700px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
       text-align: center;
     }
 
-    .contact-info a {
+    .contact-box .contact-info p {
+      margin: 8px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .contact-box .contact-info a {
       display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
+      margin: 12px 8px 0 8px;
+      padding: 10px 22px;
+      font-size: 16px;
       background: #1e5bb8;
       color: white;
       text-decoration: none;
@@ -311,99 +279,29 @@
       transition: 0.3s;
     }
 
-    .contact-info a:hover {
-      background: #154a91;
-    }
+    .contact-box .contact-info a:hover { background: #154a91; }
 
     /* Quote Form */
-    .quote-form {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin: 50px auto;
-    }
+    .quote-form { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 600px; margin: 50px auto; }
+    .quote-form input, .quote-form textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+    .quote-form input:focus, .quote-form textarea:focus { border-color: #1e5bb8; outline: none; box-shadow: 0 0 5px rgba(30,91,184,0.5); }
+    .quote-form button { background: #1e5bb8; color: white; border: none; padding: 12px 25px; cursor: pointer; border-radius: 5px; font-size: 16px; }
+    .quote-form button:hover { background: #154a91; }
 
-    .quote-form input, .quote-form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .quote-form input:focus, .quote-form textarea:focus {
-      border-color: #1e5bb8;
-      outline: none;
-      box-shadow: 0 0 5px rgba(30,91,184,0.5);
-    }
-
-    .quote-form button {
-      background: #1e5bb8;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-
-    .quote-form button:hover {
-      background: #154a91;
-    }
-
-    footer {
-      background: #1e5bb8;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 50px;
-    }
+    footer { background: #1e5bb8; color: white; text-align: center; padding: 15px 0; margin-top: 50px; }
 
     /* Responsive */
-    @media(max-width:1024px) {
-      #services .works {
-        justify-content: center;
-      }
-    }
-
+    @media(max-width:1024px) { #services .works { justify-content: center; } }
     @media(max-width:768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: rgba(30,91,184,0.8);
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        padding: 10px 20px;
-        border-radius: 8px;
-        z-index: 1002;
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      /* disable heavy parallax on mobile */
+      nav { display: none; flex-direction: column; background: rgba(30,91,184,0.8); position: absolute; top: 60px; right: 20px; padding: 10px 20px; border-radius: 8px; z-index: 1002; }
+      nav.active { display: flex; }
+      .hamburger { display: flex; }
       .slideshow { transform: none !important; }
       .slideshow img { background-attachment: scroll; }
       .hero h1 { font-size: 40px; }
       .hero p { font-size: 16px; }
     }
-
-    @media(max-width:480px) {
-      #services .works {
-        flex-direction: column;
-        align-items: center;
-      }
-      .hero h1 { font-size: 38px; }
-      .hero p { font-size: 15px; }
-    }
+    @media(max-width:480px) { #services .works { flex-direction: column; align-items: center; } .hero h1 { font-size: 38px; } .hero p { font-size: 15px; } }
   </style>
 </head>
 <body>
@@ -417,11 +315,7 @@
           <div></div>
           <div></div>
         </div>
-        <nav style="display:none;" id="mobile-brand">
-          <!-- (hidden on desktop, preserved for accessibility) -->
-        </nav>
       </div>
-
       <nav id="navbar">
         <a href="#home">Home</a>
         <a href="#services">Services</a>
@@ -433,15 +327,13 @@
     </div>
   </header>
 
-  <!-- Hero Section with Parallax Slideshow -->
+  <!-- Hero Section -->
   <section class="hero" id="home">
-    <div class="slideshow" id="slideshow">
-      <!-- Replace hero1.jpg/hero2.jpg/hero3.jpg with your actual files -->
-      <img src="hero1.jpg" alt="Fabrication Background 1" class="active">
-      <img src="hero2.jpg" alt="Fabrication Background 2">
-      <img src="hero3.jpg" alt="Fabrication Background 3">
+    <div class="slideshow">
+      <img src="hero1.jpg" class="active" alt="Hero 1">
+      <img src="hero2.jpg" alt="Hero 2">
+      <img src="hero3.jpg" alt="Hero 3">
     </div>
-
     <div class="hero-content">
       <h2>WELCOME TO</h2>
       <h1>UNITED FABRICATORS</h1>
@@ -456,27 +348,27 @@
       <div class="work-box">
         <h3>Fabrication</h3>
         <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
-        <img src="fabrication1.jpg" alt="Fabrication Service" loading="lazy">
+        <img src="fabrication1.jpg" alt="Fabrication Service">
       </div>
       <div class="work-box">
         <h3>Bending</h3>
         <p>We specialize in bending plates, pipes, angles, and channels with precision.</p>
-        <img src="bending1.jpg" alt="Bending Service" loading="lazy">
+        <img src="bending1.jpg" alt="Bending Service">
       </div>
       <div class="work-box">
         <h3>Welding (X-Ray & UT Certified)</h3>
         <p>MIG, TIG, and Stick welding. Our work is X-Ray (Radiographic) and UT (Ultrasonic) certified.</p>
-        <img src="welding1.jpg" alt="Welding Service" loading="lazy">
+        <img src="welding1.jpg" alt="Welding Service">
       </div>
       <div class="work-box">
         <h3>Machining</h3>
         <p>High precision machining services for industrial needs with guaranteed accuracy.</p>
-        <img src="machining1.jpg" alt="Machining Service" loading="lazy">
+        <img src="machining1.jpg" alt="Machining Service">
       </div>
       <div class="work-box">
         <h3>Assembly & Disassembly</h3>
         <p>We remove broken gears, couplings, pinions, or damaged shafts, repair or replace them, and reassemble machinery for smooth operation.</p>
-        <img src="assembly1.jpg" alt="Assembly Service" loading="lazy">
+        <img src="assembly1.jpg" alt="Assembly Service">
       </div>
     </div>
   </section>
@@ -489,24 +381,24 @@
         <h3>Fabrication Jobs</h3>
         <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
         <div class="image-grid">
-          <img src="fabrication1.jpg" alt="Fabrication Job" loading="lazy">
-          <img src="fabrication2.jpg" alt="Fabrication Job" loading="lazy">
-          <img src="fabrication3.jpg" alt="Fabrication Job" loading="lazy">
-          <img src="fabrication4.jpg" alt="Fabrication Job" loading="lazy">
-          <img src="fabrication5.jpg" alt="Fabrication Job" loading="lazy">
-          <img src="fabrication6.jpg" alt="Fabrication Job" loading="lazy">
+          <img src="fabrication1.jpg" alt="Fabrication Job">
+          <img src="fabrication2.jpg" alt="Fabrication Job">
+          <img src="fabrication3.jpg" alt="Fabrication Job">
+          <img src="fabrication4.jpg" alt="Fabrication Job">
+          <img src="fabrication5.jpg" alt="Fabrication Job">
+          <img src="fabrication6.jpg" alt="Fabrication Job">
         </div>
       </div>
       <div class="work-box">
         <h3>Bending & Hydraulic Press Jobs</h3>
         <p>We specialize in bending plates, pipes, angles, channels, and hydraulic press works with precision.</p>
         <div class="image-grid">
-          <img src="bending1.jpg" alt="Bending Job" loading="lazy">
-          <img src="bending2.jpg" alt="Bending Job" loading="lazy">
-          <img src="bending3.jpg" alt="Bending Job" loading="lazy">
-          <img src="bending4.jpg" alt="Bending Job" loading="lazy">
-          <img src="bending5.jpg" alt="Bending Job" loading="lazy">
-          <img src="bending6.jpg" alt="Bending Job" loading="lazy">
+          <img src="bending1.jpg" alt="Bending Job">
+          <img src="bending2.jpg" alt="Bending Job">
+          <img src="bending3.jpg" alt="Bending Job">
+          <img src="bending4.jpg" alt="Bending Job">
+          <img src="bending5.jpg" alt="Bending Job">
+          <img src="bending6.jpg" alt="Bending Job">
         </div>
       </div>
     </div>
@@ -515,13 +407,15 @@
   <!-- Contact -->
   <section id="contact">
     <h2>Contact Information</h2>
-    <div class="contact-info">
-      <p>Address: Salap Bazar, Howrah - 711409</p>
-      <p>Email: united.fabricators@yahoo.in</p>
-      <p>Telephone: 033-26533685</p>
-      <p>Phone: +91 9830182982 / +91 8240749830</p>
-      <a href="mailto:united.fabricators@yahoo.in">Email Us</a>
-      <a href="https://wa.me/918240749830" target="_blank">WhatsApp Us</a>
+    <div class="contact-box">
+      <div class="contact-info">
+        <p>Address: Salap Bazar, Howrah - 711409</p>
+        <p>Email: united.fabricators@yahoo.in</p>
+        <p>Telephone: 033-26533685</p>
+        <p>Phone: +91 9830182982 / +91 8240749830</p>
+        <a href="mailto:united.fabricators@yahoo.in">Email Us</a>
+        <a href="https://wa.me/918240749830" target="_blank">WhatsApp Us</a>
+      </div>
     </div>
   </section>
 
@@ -529,7 +423,7 @@
   <section id="map">
     <h2>Our Location</h2>
     <div style="text-align:center;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58926.211174768476!2d88.21322179010045!3d22.620649778361653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f883b10762a3db%3A0xe410b712b44c4efd!2sUnited%20Fabricators!5e0!3m2!1sen!2sin!4v1758304082680!5m2!1sen!2sin"
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58926.211174768476!2d88.21322179010045!3d22.620649778361653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f883b10762a3db%3A0xe410b712b44c4efd!2sUnited%20Fabricators!5e0!3m2!1sen!2sin!4v1758304082680!5m2!1sen!2sin" 
         width="600" height="450" style="border:0; width:100%; max-width:900px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
@@ -552,45 +446,23 @@
   </footer>
 
   <script>
-    // Toggle mobile nav (hamburger)
     function toggleMenu() {
       document.getElementById('navbar').classList.toggle('active');
     }
 
-    // Header background on scroll
     window.addEventListener('scroll', () => {
       const header = document.querySelector('header');
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Slideshow: fade between 3 images
-    (function() {
-      const slides = document.querySelectorAll('.slideshow img');
-      let idx = 0;
-      const changeInterval = 5000; // ms
-
-      setInterval(() => {
-        slides[idx].classList.remove('active');
-        idx = (idx + 1) % slides.length;
-        slides[idx].classList.add('active');
-      }, changeInterval);
-    })();
-
-    // Lightweight parallax effect for slideshow (desktop only)
-    (function() {
-      const slideshow = document.getElementById('slideshow');
-      if (!slideshow) return;
-
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      if (isMobile) return; // disable on small screens for performance
-
-      // On scroll, move slideshow slightly for parallax depth
-      window.addEventListener('scroll', () => {
-        // move at 20% of scroll speed
-        const offset = window.scrollY * 0.2;
-        slideshow.style.transform = `translateY(${offset}px)`;
-      });
-    })();
+    // Hero slideshow
+    const slides = document.querySelectorAll('.slideshow img');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000); // 5 seconds per slide
   </script>
 
 </body>
