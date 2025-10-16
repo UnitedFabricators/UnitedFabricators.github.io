@@ -31,10 +31,13 @@
       padding: 15px 50px;
       z-index: 1001;
       border-radius: 0 0 8px 8px;
-      backdrop-filter: blur(8px); 
+      backdrop-filter: blur(8px);
       background: rgba(30, 91, 184, 0.3);
       box-shadow: 0 2px 12px rgba(0,0,0,0.15);
       transition: background 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     header.scrolled {
@@ -45,6 +48,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
     }
 
     nav {
@@ -81,6 +85,7 @@
       flex-direction: column;
       cursor: pointer;
       gap: 5px;
+      margin-right: 10px;
     }
 
     .hamburger div {
@@ -90,12 +95,10 @@
       transition: all 0.3s;
     }
 
-    /* Hero Section */
+    /* Hero Section with Parallax Slideshow */
     .hero {
       height: min(100vh, 100vw);
       width: 100%;
-      background: url('united-fabricators-background.jpg') no-repeat center top;
-      background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -103,20 +106,53 @@
       text-align: center;
       color: white;
       position: relative;
+      overflow: hidden;
     }
 
+    /* dark overlay */
     .hero::after {
       content: "";
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+
+    /* slideshow container (behind content) */
+    .slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       z-index: 0;
+      will-change: transform;
+    }
+
+    .slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1.6s ease-in-out, transform 0.2s linear;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
     }
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      animation: fadeInUp 1.2s ease;
+      padding: 0 20px;
     }
 
     .hero h2 {
@@ -142,12 +178,19 @@
       font-weight: bold;
       color: #ffd700;
       margin: 0;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     }
 
     .hero p {
       font-size: 22px;
       margin-top: 15px;
       color: #ddd;
+    }
+
+    /* Fade-up animation */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* Section Styling */
@@ -346,10 +389,9 @@
         display: flex;
       }
 
-      .hero {
-        background-position: 75% 20%;
-      }
-
+      /* disable heavy parallax on mobile */
+      .slideshow { transform: none !important; }
+      .slideshow img { background-attachment: scroll; }
       .hero h1 { font-size: 40px; }
       .hero p { font-size: 16px; }
     }
@@ -358,9 +400,6 @@
       #services .works {
         flex-direction: column;
         align-items: center;
-      }
-      .hero {
-        background-position: 70% 20%;
       }
       .hero h1 { font-size: 38px; }
       .hero p { font-size: 15px; }
@@ -372,11 +411,17 @@
   <!-- Header -->
   <header>
     <div class="nav-container">
-      <div class="hamburger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div class="hamburger" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <nav style="display:none;" id="mobile-brand">
+          <!-- (hidden on desktop, preserved for accessibility) -->
+        </nav>
       </div>
+
       <nav id="navbar">
         <a href="#home">Home</a>
         <a href="#services">Services</a>
@@ -388,8 +433,15 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Parallax Slideshow -->
   <section class="hero" id="home">
+    <div class="slideshow" id="slideshow">
+      <!-- Replace hero1.jpg/hero2.jpg/hero3.jpg with your actual files -->
+      <img src="hero1.jpg" alt="Fabrication Background 1" class="active">
+      <img src="hero2.jpg" alt="Fabrication Background 2">
+      <img src="hero3.jpg" alt="Fabrication Background 3">
+    </div>
+
     <div class="hero-content">
       <h2>WELCOME TO</h2>
       <h1>UNITED FABRICATORS</h1>
@@ -477,7 +529,7 @@
   <section id="map">
     <h2>Our Location</h2>
     <div style="text-align:center;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58926.211174768476!2d88.21322179010045!3d22.620649778361653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f883b10762a3db%3A0xe410b712b44c4efd!2sUnited%20Fabricators!5e0!3m2!1sen!2sin!4v1758304082680!5m2!1sen!2sin" 
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58926.211174768476!2d88.21322179010045!3d22.620649778361653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f883b10762a3db%3A0xe410b712b44c4efd!2sUnited%20Fabricators!5e0!3m2!1sen!2sin!4v1758304082680!5m2!1sen!2sin"
         width="600" height="450" style="border:0; width:100%; max-width:900px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
@@ -500,14 +552,45 @@
   </footer>
 
   <script>
+    // Toggle mobile nav (hamburger)
     function toggleMenu() {
       document.getElementById('navbar').classList.toggle('active');
     }
 
+    // Header background on scroll
     window.addEventListener('scroll', () => {
       const header = document.querySelector('header');
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
+
+    // Slideshow: fade between 3 images
+    (function() {
+      const slides = document.querySelectorAll('.slideshow img');
+      let idx = 0;
+      const changeInterval = 5000; // ms
+
+      setInterval(() => {
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+      }, changeInterval);
+    })();
+
+    // Lightweight parallax effect for slideshow (desktop only)
+    (function() {
+      const slideshow = document.getElementById('slideshow');
+      if (!slideshow) return;
+
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (isMobile) return; // disable on small screens for performance
+
+      // On scroll, move slideshow slightly for parallax depth
+      window.addEventListener('scroll', () => {
+        // move at 20% of scroll speed
+        const offset = window.scrollY * 0.2;
+        slideshow.style.transform = `translateY(${offset}px)`;
+      });
+    })();
   </script>
 
 </body>
