@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>United Fabricators</title>
   <meta name="description" content="United Fabricators - Built on Trust, Crafted with Excellence. Specialists in Fabrication, Welding, Machining, Hydraulic Press Jobs, Gear Extraction and more.">
 
@@ -20,6 +20,7 @@
       color: #333;
       background-color: #f9f9f9;
       line-height: 1.6;
+      overflow-x: hidden; /* prevent horizontal scroll when side menu is open */
     }
 
     /* Header & Navigation */
@@ -93,6 +94,67 @@
       height: 3px;
       background: white;
       transition: all 0.3s;
+    }
+
+    .hamburger.open div:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.open div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open div:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Side menu (left) */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -280px; /* hidden by default */
+      width: 280px;
+      height: 100vh;
+      background: rgba(30,91,184,0.98);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+      gap: 10px;
+      transition: left 0.35s cubic-bezier(.2,.9,.2,1);
+      z-index: 2000;
+      box-shadow: 2px 0 12px rgba(0,0,0,0.2);
+    }
+
+    .side-menu.active {
+      left: 0;
+    }
+
+    .side-menu a {
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      padding: 14px 26px;
+      display: block;
+      transition: background 0.25s;
+    }
+
+    .side-menu a:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* overlay behind menu */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s;
+      z-index: 1500;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* Hero Section with Parallax Slideshow */
@@ -293,13 +355,19 @@
     /* Responsive */
     @media(max-width:1024px) { #services .works { justify-content: center; } }
     @media(max-width:768px) {
+      /* hide original nav; side menu will be used instead */
       nav { display: none; flex-direction: column; background: rgba(30,91,184,0.8); position: absolute; top: 60px; right: 20px; padding: 10px 20px; border-radius: 8px; z-index: 1002; }
       nav.active { display: flex; }
       .hamburger { display: flex; }
+
+      /* keep slideshow behavior working on mobile */
       .slideshow { transform: none !important; }
       .slideshow img { background-attachment: scroll; }
       .hero h1 { font-size: 40px; }
       .hero p { font-size: 16px; }
+
+      /* ensure header padding is smaller on mobile */
+      header { padding: 12px 18px; }
     }
     @media(max-width:480px) { #services .works { flex-direction: column; align-items: center; } .hero h1 { font-size: 38px; } .hero p { font-size: 15px; } }
   </style>
@@ -310,11 +378,12 @@
   <header>
     <div class="nav-container">
       <div style="display:flex; align-items:center; gap:16px;">
-        <div class="hamburger" onclick="toggleMenu()">
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
           <div></div>
           <div></div>
           <div></div>
         </div>
+        <!-- You can place a logo or brand name here if desired -->
       </div>
       <nav id="navbar">
         <a href="#home">Home</a>
@@ -326,6 +395,19 @@
       </nav>
     </div>
   </header>
+
+  <!-- Side menu (left) -->
+  <div class="side-menu" id="sideMenu" aria-hidden="true">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#works" onclick="closeMenu()">Our Works</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="#map" onclick="closeMenu()">Location</a>
+    <a href="#quote" onclick="closeMenu()">Request a Quote</a>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
@@ -446,16 +528,46 @@
   </footer>
 
   <script>
+    // Side menu toggle (left)
     function toggleMenu() {
-      document.getElementById('navbar').classList.toggle('active');
+      const sideMenu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('overlay');
+      const hamburger = document.getElementById('hamburger');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      hamburger.classList.toggle('open');
+
+      // accessibility
+      sideMenu.setAttribute('aria-hidden', !sideMenu.classList.contains('active'));
     }
 
+    function closeMenu() {
+      const sideMenu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('overlay');
+      const hamburger = document.getElementById('hamburger');
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+      hamburger.classList.remove('open');
+      sideMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    // Close menu on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close menu when clicking any link inside it (already inline onclicks exist, this is an extra safety)
+    document.querySelectorAll('.side-menu a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // Header scroll background
     window.addEventListener('scroll', () => {
       const header = document.querySelector('header');
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Hero slideshow
+    // Hero slideshow (auto-slide every 5s)
     const slides = document.querySelectorAll('.slideshow img');
     let current = 0;
     setInterval(() => {
