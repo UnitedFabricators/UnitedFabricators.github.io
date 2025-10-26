@@ -1,398 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>United Fabricators</title>
-  <meta name="description" content="United Fabricators - Built on Trust, Crafted with Excellence. Specialists in Fabrication, Welding, Machining, Hydraulic Press Jobs, Gear Extraction and more.">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Under Maintenance</title>
   <style>
-    :root{
-      --blue:#1e5bb8; /* original */
-      --blue-dark:#154a91;
-      --gold:#ffd700; /* original */
-      --bg:#f4f7fb;
-      --muted:#6b6f78;
-      --glass: rgba(255,255,255,0.72);
-      --glass-2: rgba(255,255,255,0.06);
-      --card-shadow: 0 10px 30px rgba(30,40,80,0.08);
-      --radius:12px;
-      --max-width:1180px;
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 20px;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg,var(--bg), #eef3fb 120%);
-      color:#222;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
     }
 
-    /* ===== Header ===== */
-    header{
-      position:sticky; top:14px; z-index:1100; display:flex; justify-content:center; pointer-events:auto;
-    }
-    .topbar{
-      width:calc(100% - 40px); max-width:var(--max-width); background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
-      border-radius:16px; padding:12px 18px; display:flex; align-items:center; gap:20px; box-shadow:var(--card-shadow);
-      backdrop-filter: blur(6px) saturate(120%);
+    p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
     }
 
-    .brand{display:flex; align-items:center; gap:14px}
-    .brand img{height:46px; width:auto; border-radius:8px}
-    .brand h1{font-family:'Poppins',sans-serif; font-size:18px; margin:0; color:var(--blue); letter-spacing:0.6px}
-    .brand p{margin:0; font-size:12px; color:var(--muted)}
-
-    nav{margin-left:auto; display:flex; gap:10px; align-items:center}
-    nav a{display:inline-flex; align-items:center; gap:8px; padding:8px 14px; text-decoration:none; font-weight:600; color:var(--blue-dark); border-radius:10px; transition:all .22s ease; font-size:15px}
-    nav a:hover{background:var(--glass-2); transform:translateY(-3px)}
-    nav a.active{background:linear-gradient(90deg, rgba(30,91,184,0.12), rgba(255,215,0,0.02)); color:var(--blue)}
-
-    /* Call to action */
-    .cta{background:linear-gradient(90deg,var(--blue),var(--blue-dark)); color:white; padding:9px 14px; border-radius:10px; box-shadow:0 6px 18px rgba(30,91,184,0.18)}
-    .cta:hover{transform:translateY(-2px)}
-
-    /* Hamburger for small screens */
-    .hamburger{display:none}
-
-    /* ===== Hero ===== */
-    .hero{min-height:74vh; display:grid; grid-template-columns:1fr 460px; gap:40px; align-items:center; padding:80px 20px; max-width:var(--max-width); margin:40px auto}
-
-    .hero-left{padding:36px; border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,252,255,0.8)); box-shadow:var(--card-shadow)}
-    .kicker{font-family:'Poppins',sans-serif; color:var(--blue); font-weight:700; letter-spacing:2px; font-size:13px}
-    .hero-title{font-family:'Poppins',sans-serif; font-size:46px; color:var(--gold); margin:10px 0 6px}
-    .hero-sub{font-size:18px; color:#2b2f36; margin-bottom:18px}
-    .hero-meta{color:var(--muted); font-size:15px}
-
-    .hero-right{position:relative; height:420px; border-radius:16px; overflow:hidden; display:flex; align-items:center; justify-content:center}
-    .hero-slider{position:absolute; inset:0}
-    .hero-slider img{width:100%; height:100%; object-fit:cover; display:block; filter:contrast(1.02) saturate(0.98); transform:scale(1.02); opacity:0; transition:opacity 1s ease}
-    .hero-slider img.active{opacity:1}
-    .hero-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.32));}
-    .hero-card{position:relative; z-index:3; padding:18px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6)); width:85%; box-shadow:0 8px 30px rgba(10,20,40,0.08); text-align:left}
-    .hero-card h3{margin:0; color:var(--blue)}
-    .hero-card p{margin:6px 0 0; color:var(--muted)}
-
-    /* Sections */
-    section{padding:60px 20px}
-    .container{max-width:var(--max-width); margin:0 auto}
-    h2.section-title{font-family:'Poppins',sans-serif; font-size:24px; color:var(--blue); text-align:center; margin-bottom:18px}
-    .divider{height:4px; width:84px; background:linear-gradient(90deg,var(--blue),var(--blue-dark)); margin:10px auto 28px; border-radius:6px}
-
-    /* Services grid */
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px}
-    .card{background:white; border-radius:14px; padding:18px; box-shadow:var(--card-shadow); transition:transform .28s ease, box-shadow .28s ease}
-    .card:hover{transform:translateY(-8px); box-shadow:0 20px 40px rgba(30,40,80,0.08)}
-    .card h3{color:var(--blue); margin:8px 0}
-    .card p{color:var(--muted); margin:0}
-    .card img{width:100%; height:190px; object-fit:cover; border-radius:10px; margin-top:12px}
-
-    /* Our Works - image grid */
-    .image-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px}
-    .image-grid img{width:100%; height:110px; object-fit:cover; border-radius:8px}
-
-    /* Contact box & quote form */
-    .contact-box{background:white; border-radius:14px; padding:22px; box-shadow:var(--card-shadow); display:flex; flex-direction:column; gap:10px; align-items:center}
-    .contact-info p{margin:6px 0; color:#2b2f36}
-    .contact-cta{display:flex; gap:10px; flex-wrap:wrap}
-    .contact-cta a{padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:600}
-    .mail-btn{background:linear-gradient(90deg,var(--blue),var(--blue-dark)); color:white}
-    .wa-btn{background:#25D366; color:white}
-
-    .quote-form{background:white; padding:20px; border-radius:12px; max-width:720px; margin:18px auto; box-shadow:var(--card-shadow)}
-    .quote-form input, .quote-form textarea{width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid #e2e6ef}
-    .quote-form button{background:linear-gradient(90deg,var(--blue),var(--blue-dark)); color:white; padding:12px 18px; border-radius:10px; border:none; font-weight:700}
-
-    /* Footer */
-    footer{padding:26px 10px; text-align:center; color:white; margin-top:30px; background:linear-gradient(90deg,var(--blue),var(--blue-dark));}
-
-    /* Back to top */
-    .to-top{position:fixed; right:20px; bottom:20px; background:var(--blue); color:white; padding:12px 14px; border-radius:12px; display:inline-grid; place-items:center; box-shadow:0 12px 30px rgba(30,91,184,0.18); cursor:pointer; border:none}
-
-    /* Animations */
-    .reveal{opacity:0; transform:translateY(16px); transition:all .7s cubic-bezier(.2,.9,.2,1)}
-    .reveal.visible{opacity:1; transform:none}
-
-    /* Responsive tweaks */
-    @media(max-width:1000px){
-      .hero{grid-template-columns:1fr; gap:18px; padding:30px 20px; min-height:60vh}
-      .hero-right{height:300px}
-      nav{display:none}
-      .hamburger{display:inline-flex; margin-left:auto}
+    .loader {
+      margin-top: 30px;
+      border: 5px solid rgba(255,255,255,0.3);
+      border-top: 5px solid #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
     }
-    @media(max-width:520px){
-      .topbar{padding:10px}
-      .brand img{height:40px}
-      .hero-title{font-size:34px}
-      .hero-sub{font-size:15px}
-      .hero-right{height:220px}
-      .card img{height:160px}
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .contact {
+      margin-top: 35px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
+  <h1>We'll Be Back Soon!</h1>
+  <p>Our website is currently undergoing scheduled maintenance.<br>
+  We appreciate your patience and understanding. Please check back later.</p>
 
-  <header>
-    <div class="topbar">
-      <div class="brand" aria-hidden="false">
-        <!-- Keep your logo file if available -->
-        <img src="logo.png" alt="United Fabricators Logo" onerror="this.style.display='none'">
-        <div>
-          <h1>UNITED FABRICATORS</h1>
-          <p>Built on Trust — Crafted with Excellence</p>
-        </div>
-      </div>
+  <div class="loader"></div>
 
-      <nav id="mainNav" aria-label="Primary Navigation">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#works" class="nav-link">Our Works</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a href="#map" class="nav-link">Location</a>
-        <a href="#quote" class="nav-link cta">Request a Quote</a>
-      </nav>
-
-      <button class="hamburger" aria-label="Open menu" onclick="toggleSide()">☰</button>
-    </div>
-  </header>
-
-  <!-- Small-screen side menu (keeps same links) -->
-  <div id="side" style="position:fixed;inset:0;display:none;z-index:1500">
-    <div style="width:280px;height:100vh;background:linear-gradient(180deg,var(--blue),var(--blue-dark));color:white;padding:18px;border-top-right-radius:12px;box-shadow:4px 0 24px rgba(0,0,0,0.3)">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-        <img src="logo.png" alt="logo" style="height:44px;border-radius:8px;" onerror="this.style.display='none'">
-        <div><strong>United Fabricators</strong><div style="font-size:12px;opacity:.9">Salap Bazar, Howrah</div></div>
-      </div>
-      <nav style="display:flex;flex-direction:column;gap:8px;margin-top:20px">
-        <a href="#home" onclick="closeSide()" style="color:white;text-decoration:none;padding:10px;border-radius:8px">Home</a>
-        <a href="#services" onclick="closeSide()" style="color:white;text-decoration:none;padding:10px;border-radius:8px">Services</a>
-        <a href="#works" onclick="closeSide()" style="color:white;text-decoration:none;padding:10px;border-radius:8px">Our Works</a>
-        <a href="#contact" onclick="closeSide()" style="color:white;text-decoration:none;padding:10px;border-radius:8px">Contact</a>
-        <a href="#map" onclick="closeSide()" style="color:white;text-decoration:none;padding:10px;border-radius:8px">Location</a>
-        <a href="#quote" onclick="closeSide()" style="color:white;text-decoration:none;padding:10px;border-radius:8px">Request a Quote</a>
-      </nav>
-    </div>
-    <div style="flex:1;background:rgba(0,0,0,0.45)" onclick="closeSide()"></div>
+  <div class="contact">
+    <p>For urgent inquiries, please contact us:</p>
+    <p>
+      📞 <strong>+91 9830182982 / +91 8240749830</strong><br>
+      📧 <a href="mailto:united.fabricators@yahoo.in">united.fabricators@yahoo.in</a><br>
+      💬 <a href="https://wa.me/918240749830" target="_blank">Chat on WhatsApp</a><br>
+      📍 Salap Bazar, Howrah - 711409
+    </p>
   </div>
 
-  <!-- Hero -->
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-left reveal">
-        <div class="kicker">WELCOME TO</div>
-        <div class="hero-title">UNITED FABRICATORS</div>
-        <div class="hero-sub">Built on Trust, Crafted with Excellence</div>
-        <div class="hero-meta">Specialists in Fabrication, Welding, Machining, Hydraulic Press Jobs, Gear Extraction and more. We handle small to industrial scale projects with care and precision.</div>
-
-        <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap">
-          <a class="cta" href="#quote">Request a Quote</a>
-          <a href="#contact" style="padding:10px 14px; border-radius:10px; background:transparent; border:1px solid rgba(30,91,184,0.12); color:var(--blue); text-decoration:none; font-weight:700">Contact Us</a>
-        </div>
-      </div>
-
-      <div class="hero-right reveal">
-        <div class="hero-slider" aria-hidden="true">
-          <img src="hero1.jpg" class="active" alt="Hero 1">
-          <img src="hero2.jpg" alt="Hero 2">
-          <img src="hero3.jpg" alt="Hero 3">
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-card">
-          <h3>Trusted Fabrication & Machining</h3>
-          <p>X-Ray and UT certified welding, precise machining and hydraulic press works — delivered on time.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services">
-      <div class="container">
-        <h2 class="section-title">Services Offered</h2>
-        <div class="divider"></div>
-        <div class="grid">
-          <div class="card reveal">
-            <h3>Fabrication</h3>
-            <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
-            <img src="fabrication1.jpg" alt="Fabrication Service">
-          </div>
-
-          <div class="card reveal">
-            <h3>Bending</h3>
-            <p>We specialize in bending plates, pipes, angles, and channels with precision.</p>
-            <img src="bending1.jpg" alt="Bending Service">
-          </div>
-
-          <div class="card reveal">
-            <h3>Welding (X-Ray & UT Certified)</h3>
-            <p>MIG, TIG, and Stick welding. Our work is X-Ray (Radiographic) and UT (Ultrasonic) certified.</p>
-            <img src="welding1.jpg" alt="Welding Service">
-          </div>
-
-          <div class="card reveal">
-            <h3>Machining</h3>
-            <p>High precision machining services for industrial needs with guaranteed accuracy.</p>
-            <img src="machining1.jpg" alt="Machining Service">
-          </div>
-
-          <div class="card reveal">
-            <h3>Assembly & Disassembly</h3>
-            <p>We remove broken gears, couplings, pinions, or damaged shafts, repair or replace them, and reassemble machinery for smooth operation.</p>
-            <img src="assembly1.jpg" alt="Assembly Service">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Works -->
-    <section id="works">
-      <div class="container">
-        <h2 class="section-title">Our Works</h2>
-        <div class="divider"></div>
-
-        <div class="grid">
-          <div class="card reveal">
-            <h3>Fabrication Jobs</h3>
-            <p>We provide top-quality fabrication jobs ensuring strength and durability.</p>
-            <div class="image-grid" style="margin-top:12px">
-              <img src="fabrication1.jpg" alt="Fabrication Job">
-              <img src="fabrication2.jpg" alt="Fabrication Job">
-              <img src="fabrication3.jpg" alt="Fabrication Job">
-              <img src="fabrication4.jpg" alt="Fabrication Job">
-              <img src="fabrication5.jpg" alt="Fabrication Job">
-              <img src="fabrication6.jpg" alt="Fabrication Job">
-            </div>
-          </div>
-
-          <div class="card reveal">
-            <h3>Bending & Hydraulic Press Jobs</h3>
-            <p>We specialize in bending plates, pipes, angles, channels, and hydraulic press works with precision.</p>
-            <div class="image-grid" style="margin-top:12px">
-              <img src="bending1.jpg" alt="Bending Job">
-              <img src="bending2.jpg" alt="Bending Job">
-              <img src="bending3.jpg" alt="Bending Job">
-              <img src="bending4.jpg" alt="Bending Job">
-              <img src="bending5.jpg" alt="Bending Job">
-              <img src="bending6.jpg" alt="Bending Job">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact Information</h2>
-        <div class="divider"></div>
-
-        <div class="contact-box reveal">
-          <div class="contact-info">
-            <p><strong>Address:</strong> Salap Bazar, Howrah - 711409</p>
-            <p><strong>Email:</strong> united.fabricators@yahoo.in</p>
-            <p><strong>Telephone:</strong> 033-26533685</p>
-            <p><strong>Phone:</strong> +91 9830182982 / +91 8240749830</p>
-          </div>
-
-          <div class="contact-cta">
-            <a class="mail-btn" href="mailto:united.fabricators@yahoo.in">Email Us</a>
-            <a class="wa-btn" href="https://wa.me/918240749830" target="_blank">WhatsApp Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Map -->
-    <section id="map">
-      <div class="container">
-        <h2 class="section-title">Our Location</h2>
-        <div class="divider"></div>
-        <div style="text-align:center; border-radius:12px; overflow:hidden; box-shadow:var(--card-shadow);">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58926.211174768476!2d88.21322179010045!3d22.620649778361653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f883b10762a3db%3A0xe410b712b44c4efd!2sUnited%20Fabricators!5e0!3m2!1sen!2sin!4v1758304082680!5m2!1sen!2sin" width="600" height="450" style="border:0; width:100%; max-width:900px; min-height:300px; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- Request a Quote -->
-    <section id="quote">
-      <div class="container">
-        <h2 class="section-title">Request a Quote</h2>
-        <div class="divider"></div>
-
-        <!-- Keeping your original mailto action as requested -->
-        <form class="quote-form reveal" action="mailto:united.fabricators@yahoo.in" method="POST" enctype="text/plain">
-          <input type="text" placeholder="Your Name" name="name" required>
-          <input type="email" placeholder="Your Email" name="email" required>
-          <input type="tel" placeholder="Your Phone" name="phone" required>
-          <textarea placeholder="Your Requirements" name="requirements" rows="5" required></textarea>
-          <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 United Fabricators. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <button class="to-top" id="toTop" title="Back to top" aria-label="Back to top" onclick="scrollToTop()">↑</button>
-
-  <script>
-    // ===== simple slideshow for hero =====
-    (function(){
-      const slides = document.querySelectorAll('.hero-slider img');
-      let idx = 0;
-      setInterval(()=>{
-        slides[idx].classList.remove('active');
-        idx = (idx+1) % slides.length;
-        slides[idx].classList.add('active');
-      },4500);
-    })();
-
-    // ===== reveal on scroll =====
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    },{threshold:0.12});
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-    // ===== nav active highlighting =====
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = Array.from(navLinks).map(a=>document.querySelector(a.getAttribute('href')));
-    const io2 = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href') === ('#'+e.target.id)));
-        }
-      });
-    },{threshold:0.35});
-    sections.forEach(s=>{ if(s) io2.observe(s); });
-
-    // ===== side menu for small screens =====
-    function toggleSide(){ document.getElementById('side').style.display='flex'; }
-    function closeSide(){ document.getElementById('side').style.display='none'; }
-
-    // ===== back to top =====
-    function scrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=>{ toTop.style.display = window.scrollY>300 ? 'inline-grid' : 'none'; });
-
-    // ensure initial nav active state
-    window.addEventListener('load', ()=>{ const evt = new Event('scroll'); window.dispatchEvent(evt); });
-  </script>
-
+  <footer>&copy; 2025 United Fabricators</footer>
 </body>
 </html>
