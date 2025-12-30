@@ -1215,6 +1215,62 @@
       50% { transform: translateY(-3px); }
     }
     
+    /* --- Scroll Animations --- */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .scroll-animate.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Staggered animation delays for multiple elements */
+    .scroll-animate:nth-child(1) { transition-delay: 0.1s; }
+    .scroll-animate:nth-child(2) { transition-delay: 0.2s; }
+    .scroll-animate:nth-child(3) { transition-delay: 0.3s; }
+    .scroll-animate:nth-child(4) { transition-delay: 0.4s; }
+    .scroll-animate:nth-child(5) { transition-delay: 0.5s; }
+    .scroll-animate:nth-child(6) { transition-delay: 0.6s; }
+    
+    /* Fade in from left animation */
+    .scroll-animate-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .scroll-animate-left.animate-in {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    /* Fade in from right animation */
+    .scroll-animate-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .scroll-animate-right.animate-in {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    /* Scale up animation */
+    .scroll-animate-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .scroll-animate-scale.animate-in {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
     /* --- 10. Responsive Design --- */
     @media(max-width: 900px) {
       .contact-wrapper {
@@ -1386,14 +1442,14 @@
       </div>
       
       <div class="service-grid">
-        <div class="service-card">
+        <div class="service-card scroll-animate">
           <img src="fabrication1.jpg" alt="Custom Metal Fabrication">
           <div class="service-content">
             <h3>Custom Fabrication</h3>
             <p>Top-quality fabrication jobs ensuring strength and durability for all industrial needs.</p>
           </div>
         </div>
-        <div class="service-card">
+        <div class="service-card scroll-animate">
           <img src="welding1.jpg" alt="Certified Welding">
           <div class="service-content">
             <h3>X-Ray & UT Certified Welding</h3>
@@ -1401,21 +1457,21 @@
           </div>
         </div>
         
-        <div class="service-card">
+        <div class="service-card scroll-animate">
           <img src="bending1.jpg" alt="Plate and Pipe Bending">
           <div class="service-content">
             <h3>Precision Bending</h3>
             <p>Accurate bending for plates, pipes, angles, and channels to your exact specifications.</p>
           </div>
         </div>
-        <div class="service-card">
+        <div class="service-card scroll-animate">
           <img src="machining1.jpg" alt="Precision Machining">
           <div class="service-content">
             <h3>Precision Machining</h3>
             <p>High-precision milling, lathing, and machining services with guaranteed accuracy.</p>
           </div>
         </div>
-        <div class="service-card">
+        <div class="service-card scroll-animate">
           <img src="assembly1.jpg" alt="Machine Assembly and Repair">
           <div class="service-content">
             <h3>Assembly & Disassembly</h3>
@@ -1423,7 +1479,7 @@
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card scroll-animate">
           <img src="bending2.jpg" alt="Hydraulic Press Machine">
           <div class="service-content">
             <h3>Hydraulic Press Jobs</h3>
@@ -1441,7 +1497,7 @@
       </div>
       
       <div class="features-grid">
-        <div class="feature-card">
+        <div class="feature-card scroll-animate">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1451,7 +1507,7 @@
           <p>Over two decades of expertise in metal fabrication, welding, and precision machining for industrial clients.</p>
         </div>
         
-        <div class="feature-card">
+        <div class="feature-card scroll-animate">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1461,7 +1517,7 @@
           <p>All welding work is certified for radiographic and ultrasonic testing, ensuring highest quality standards.</p>
         </div>
         
-        <div class="feature-card">
+        <div class="feature-card scroll-animate">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -1471,7 +1527,7 @@
           <p>Quick project completion without compromising quality. We understand your deadlines matter.</p>
         </div>
         
-        <div class="feature-card">
+        <div class="feature-card scroll-animate">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
@@ -1481,7 +1537,7 @@
           <p>Rigorous quality checks at every stage ensure durability and precision in all our fabrication work.</p>
         </div>
         
-        <div class="feature-card">
+        <div class="feature-card scroll-animate">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
@@ -1491,7 +1547,7 @@
           <p>Every project is unique. We provide tailored fabrication solutions to meet your specific requirements.</p>
         </div>
         
-        <div class="feature-card">
+        <div class="feature-card scroll-animate">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -1513,10 +1569,10 @@
         <h3>Fabrication Projects</h3>
         <p>A look at our custom-built structures, frames, and heavy-duty components.</p>
         <div class="gallery-grid">
-          <div class="gallery-item"><img src="fabrication2.jpg" alt="Fabrication Job"></div>
-          <div class="gallery-item"><img src="fabrication3.jpg" alt="Fabrication Job"></div>
-          <div class="gallery-item"><img src="fabrication4.jpg" alt="Fabrication Job"></div>
-          <div class="gallery-item"><img src="fabrication5.jpg" alt="Fabrication Job"></div>
+          <div class="gallery-item scroll-animate"><img src="fabrication2.jpg" alt="Fabrication Job"></div>
+          <div class="gallery-item scroll-animate"><img src="fabrication3.jpg" alt="Fabrication Job"></div>
+          <div class="gallery-item scroll-animate"><img src="fabrication4.jpg" alt="Fabrication Job"></div>
+          <div class="gallery-item scroll-animate"><img src="fabrication5.jpg" alt="Fabrication Job"></div>
         </div>
       </div>
       
@@ -1524,10 +1580,10 @@
         <h3>Bending & Press Work</h3>
         <p>Examples of precise plate, pipe, and channel bending using our press equipment.</p>
         <div class="gallery-grid">
-          <div class="gallery-item"><img src="bending2.jpg" alt="Bending Job"></div>
-          <div class="gallery-item"><img src="bending3.jpg" alt="Bending Job"></div>
-          <div class="gallery-item"><img src="bending4.jpg" alt="Bending Job"></div>
-          <div class="gallery-item"><img src="bending5.jpg" alt="Bending Job"></div>
+          <div class="gallery-item scroll-animate"><img src="bending2.jpg" alt="Bending Job"></div>
+          <div class="gallery-item scroll-animate"><img src="bending3.jpg" alt="Bending Job"></div>
+          <div class="gallery-item scroll-animate"><img src="bending4.jpg" alt="Bending Job"></div>
+          <div class="gallery-item scroll-animate"><img src="bending5.jpg" alt="Bending Job"></div>
         </div>
       </div>
 
@@ -1535,11 +1591,11 @@
 
     <section id="contact" class="container">
       <div class="section-header" id="quote">
-        <h2>Contact Us</h2>
-        <p>Get in touch for more information or to request a quote for your next project.</p>
+        <h2 class="scroll-animate-scale">Contact Us</h2>
+        <p class="scroll-animate-scale">Get in touch for more information or to request a quote for your next project.</p>
       </div>
       
-      <div class="contact-wrapper">
+      <div class="contact-wrapper scroll-animate">
         <div class="contact-info">
           <h3>Get In Touch</h3>
           <p>We are ready to discuss your requirements. Call us, email us, or visit our workshop.</p>
@@ -1671,6 +1727,27 @@
         behavior: 'smooth'
       });
     }
+    
+    // 5. Scroll Animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          // Optional: unobserve after animation to improve performance
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all elements with scroll animation classes
+    document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale').forEach(el => {
+      observer.observe(el);
+    });
   </script>
 
 </body>
