@@ -702,6 +702,154 @@
       z-index: 1;
     }
     
+    /* --- Clients Section --- */
+    #clients {
+      background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #clients::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 191, 255, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    #clients::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(30, 91, 184, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .client-box {
+      background: var(--bg-white);
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .client-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .client-box:hover {
+      border-color: var(--primary-blue);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .client-box:hover::before {
+      opacity: 0.03;
+    }
+    
+    .client-logo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .client-logo-placeholder span {
+      font-size: 16px;
+      color: var(--text-light);
+      font-weight: 500;
+      text-align: center;
+    }
+    
+    /* Style for when you add actual logos */
+    .client-logo-placeholder img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+    
+    .client-box:hover .client-logo-placeholder img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    
+    .more-clients {
+      text-align: center;
+      padding: 30px 0 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .more-clients p {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .more-clients p::before,
+    .more-clients p::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-blue));
+    }
+    
+    .more-clients p::before {
+      right: 100%;
+      margin-right: 20px;
+      transform: translateY(-50%) rotate(180deg);
+    }
+    
+    .more-clients p::after {
+      left: 100%;
+      margin-left: 20px;
+      transform: translateY(-50%);
+    }
+    
     /* --- 6. "Our Works" / Gallery Section --- */
     #works {
       background: linear-gradient(180deg, var(--bg-light) 0%, #e8f3ff 50%, var(--bg-white) 100%);
@@ -1332,6 +1480,29 @@
         gap: 35px;
       }
       
+      /* Clients section on mobile */
+      .clients-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .client-box {
+        height: 150px;
+      }
+      
+      .more-clients p::before,
+      .more-clients p::after {
+        width: 40px;
+      }
+      
+      .more-clients p::before {
+        margin-right: 15px;
+      }
+      
+      .more-clients p::after {
+        margin-left: 15px;
+      }
+      
       /* Back to Top button on mobile */
       .back-to-top {
         bottom: 20px;
@@ -1500,6 +1671,67 @@
           <h3>Skilled Professionals</h3>
           <p>Our team of experienced technicians and certified welders deliver excellence in every project.</p>
         </div>
+      </div>
+    </section>
+
+    <section id="clients" class="container">
+      <div class="section-header">
+        <h2>We Offer Services To</h2>
+        <p>Trusted by leading companies across industries for precision fabrication solutions</p>
+      </div>
+      
+      <div class="clients-grid">
+        <div class="client-box">
+          <div class="client-logo-placeholder">
+            <img src="client1.png" alt="Client 1">
+          </div>
+        </div>
+        
+        <div class="client-box">
+          <div class="client-logo-placeholder">
+            <img src="client2.png" alt="Client 2">
+          </div>
+        </div>
+        
+        <div class="client-box">
+          <div class="client-logo-placeholder">
+            <img src="client3.png" alt="Client 3">
+          </div>
+        </div>
+        
+        <div class="client-box">
+          <div class="client-logo-placeholder">
+            <img src="client4.png" alt="Client 4">
+          </div>
+        </div>
+        
+        <div class="client-box">
+          <div class="client-logo-placeholder">
+            <img src="client5.png" alt="Client 5">
+          </div>
+        </div>
+        
+        <div class="client-box">
+          <div class="client-logo-placeholder">
+            <img src="client6.png" alt="Client 6">
+          </div>
+        </div>
+        
+        <div class="client-box">
+          <div class="client-logo-placeholder">
+            <img src="client7.png" alt="Client 7">
+          </div>
+        </div>
+        
+        <div class="client-box">
+          <div class="client-logo-placeholder">
+            <img src="client8.png" alt="Client 8">
+          </div>
+        </div>
+      </div>
+      
+      <div class="more-clients">
+        <p>...and many more</p>
       </div>
     </section>
 
