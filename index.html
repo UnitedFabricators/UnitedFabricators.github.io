@@ -2107,9 +2107,16 @@
     
     // 3. Close mobile menu when a link is clicked
     document.querySelectorAll('#navbar a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         if (navMenu.classList.contains('active')) {
+          // Close menu first
           toggleMenu();
+          
+          // Small delay to allow menu to close before scrolling
+          setTimeout(() => {
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+          }, 100);
         }
       });
     });
