@@ -41,42 +41,6 @@
       overflow-x: hidden;
     }
     
-    /* Subtle grid pattern for tech feel */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(rgba(30, 91, 184, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(30, 91, 184, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      pointer-events: none;
-      z-index: 9999;
-    }
-    
-    /* Animated gradient orbs in background */
-    body::after {
-      content: "";
-      position: fixed;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(30, 91, 184, 0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: -1;
-      animation: floatOrb 15s ease-in-out infinite;
-    }
-    
-    @keyframes floatOrb {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-100px, 100px) scale(1.1); }
-    }
-    
     /* --- 2. Header & Navigation --- */
     header {
       position: fixed;
@@ -399,6 +363,8 @@
     /* --- 4. Main Content & Sections --- */
     main {
       width: 100%;
+      position: relative;
+      z-index: 2;
     }
     
     .container {
@@ -521,6 +487,15 @@
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       border: 2px solid transparent;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    
+    /* ENHANCED: 3D hover effect */
+    .service-card:hover {
+      transform: translateY(-12px) rotateX(2deg);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-blue);
     }
     
     .service-card::before {
@@ -534,9 +509,10 @@
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
+      z-index: 1;
     }
     
-    /* Animated top border */
+    /* ENHANCED: Animated top border */
     .service-card::after {
       content: '';
       position: absolute;
@@ -546,12 +522,7 @@
       height: 4px;
       background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
       transition: width 0.4s ease;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-blue);
+      z-index: 2;
     }
     
     .service-card:hover::before {
@@ -562,20 +533,75 @@
       width: 100%;
     }
     
+    /* ENHANCED: Image container with overlay */
+    .service-card .img-container {
+      position: relative;
+      overflow: hidden;
+      height: 240px;
+    }
+    
     .service-card img {
       width: 100%;
-      height: 240px;
+      height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.6s ease;
     }
     
+    /* ENHANCED: Gradient overlay on image */
+    .service-card .img-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(30, 91, 184, 0.6) 0%, rgba(0, 191, 255, 0.6) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .service-card:hover .img-container::after {
+      opacity: 1;
+    }
+    
     .service-card:hover img {
-      transform: scale(1.1);
+      transform: scale(1.15) rotate(2deg);
+    }
+    
+    /* ENHANCED: Floating icon on hover */
+    .service-card .img-container .hover-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      opacity: 0;
+    }
+    
+    .service-card:hover .hover-icon {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    
+    .hover-icon svg {
+      width: 30px;
+      height: 30px;
+      color: var(--primary-blue);
     }
     
     .service-content {
       padding: 30px;
+      position: relative;
+      z-index: 2;
     }
     
     .service-content h3 {
@@ -586,6 +612,11 @@
       color: var(--primary-blue);
       margin: 0 0 12px;
       text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+    
+    .service-card:hover .service-content h3 {
+      color: var(--accent-cyan);
     }
     
     .service-content p {
@@ -634,7 +665,28 @@
       overflow: hidden;
     }
     
+    /* ENHANCED: Corner accent that expands */
     .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-top: 0 solid var(--primary-blue);
+      border-left: 0 solid transparent;
+      transition: all 0.4s ease;
+    }
+    
+    .feature-card:hover::before {
+      width: 80px;
+      height: 80px;
+      border-top-width: 80px;
+      border-left-width: 80px;
+    }
+    
+    /* ENHANCED: Gradient background reveal */
+    .feature-card::after {
       content: '';
       position: absolute;
       top: 0;
@@ -644,6 +696,7 @@
       background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
+      z-index: 0;
     }
     
     .feature-card:hover {
@@ -652,7 +705,7 @@
       box-shadow: var(--shadow-lg);
     }
     
-    .feature-card:hover::before {
+    .feature-card:hover::after {
       opacity: 0.05;
     }
     
@@ -670,15 +723,41 @@
       z-index: 1;
     }
     
+    /* ENHANCED: Pulsing ring effect */
+    .feature-icon::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid var(--primary-blue);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+    
+    .feature-card:hover .feature-icon::before {
+      width: 120%;
+      height: 120%;
+      opacity: 0.5;
+    }
+    
     .feature-icon svg {
       width: 40px;
       height: 40px;
       color: white;
+      transition: transform 0.4s ease;
     }
     
     .feature-card:hover .feature-icon {
-      transform: scale(1.1) rotate(5deg);
+      transform: scale(1.1) rotate(360deg);
       box-shadow: 0 10px 30px rgba(30, 91, 184, 0.3);
+    }
+    
+    .feature-card:hover .feature-icon svg {
+      transform: scale(1.1);
     }
     
     .feature-card h3 {
@@ -691,6 +770,11 @@
       letter-spacing: 0.5px;
       position: relative;
       z-index: 1;
+      transition: color 0.3s ease;
+    }
+    
+    .feature-card:hover h3 {
+      color: var(--accent-cyan);
     }
     
     .feature-card p {
@@ -913,8 +997,31 @@
       position: relative;
       height: 280px;
       transition: all 0.4s ease;
+      cursor: pointer;
     }
     
+    /* ENHANCED: Animated corner borders */
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-top: 3px solid var(--accent-cyan);
+      border-left: 3px solid var(--accent-cyan);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 3;
+    }
+    
+    .gallery-item:hover::before {
+      opacity: 1;
+      width: 40px;
+      height: 40px;
+    }
+    
+    /* ENHANCED: Gradient overlay */
     .gallery-item::after {
       content: '';
       position: absolute;
@@ -925,6 +1032,7 @@
       background: linear-gradient(135deg, rgba(30, 91, 184, 0.7) 0%, rgba(0, 191, 255, 0.7) 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
+      z-index: 2;
     }
     
     .gallery-item:hover::after {
@@ -939,11 +1047,41 @@
     }
     
     .gallery-item:hover img {
-      transform: scale(1.2);
+      transform: scale(1.2) rotate(2deg);
     }
     
     .gallery-item:hover {
       box-shadow: var(--shadow-lg);
+      transform: translateY(-8px);
+    }
+    
+    /* ENHANCED: Zoom icon on hover */
+    .gallery-item .zoom-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      opacity: 0;
+    }
+    
+    .gallery-item:hover .zoom-icon {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    
+    .zoom-icon svg {
+      width: 30px;
+      height: 30px;
+      color: var(--primary-blue);
     }
     
     /* --- 7. Contact Section --- */
@@ -1076,6 +1214,27 @@
       font-size: 15px;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* ENHANCED: Ripple effect */
+    .contact-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+    
+    .contact-btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
     
     .whatsapp-btn {
@@ -1105,6 +1264,13 @@
     
     .contact-btn svg {
       flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .contact-btn span {
+      position: relative;
+      z-index: 1;
     }
     
     /* Contact Form */
@@ -1138,6 +1304,7 @@
       border-color: var(--primary-blue);
       box-shadow: 0 0 0 4px rgba(30, 91, 184, 0.1);
       background: white;
+      transform: translateY(-2px);
     }
     
     .contact-form button {
@@ -1304,12 +1471,12 @@
     }
     
     .back-to-top:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.1);
       box-shadow: 0 8px 30px rgba(30, 91, 184, 0.6);
     }
     
     .back-to-top:active {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.05);
     }
     
     .back-to-top svg {
@@ -1465,6 +1632,12 @@
         width: 20px;
         height: 20px;
       }
+      
+      /* Reduce floating shapes on mobile */
+      .shape:nth-child(4),
+      .shape:nth-child(5) {
+        display: none;
+      }
     }
     
   </style>
@@ -1508,14 +1681,28 @@
       
       <div class="service-grid">
         <div class="service-card">
-          <img src="fabrication1.jpg" alt="Custom Metal Fabrication">
+          <div class="img-container">
+            <img src="fabrication1.jpg" alt="Custom Metal Fabrication">
+            <div class="hover-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
           <div class="service-content">
             <h3>Custom Fabrication</h3>
             <p>Top-quality fabrication jobs ensuring strength and durability for all industrial needs.</p>
           </div>
         </div>
         <div class="service-card">
-          <img src="welding1.jpg" alt="Certified Welding">
+          <div class="img-container">
+            <img src="welding1.jpg" alt="Certified Welding">
+            <div class="hover-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
           <div class="service-content">
             <h3>X-Ray & UT Certified Welding</h3>
             <p>MIG, TIG, and Stick welding. Our work is certified for radiographic and ultrasonic testing.</p>
@@ -1523,21 +1710,42 @@
         </div>
         
         <div class="service-card">
-          <img src="bending1.jpg" alt="Plate and Pipe Bending">
+          <div class="img-container">
+            <img src="bending1.jpg" alt="Plate and Pipe Bending">
+            <div class="hover-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
           <div class="service-content">
             <h3>Precision Bending</h3>
             <p>Accurate bending for plates, pipes, angles, and channels to your exact specifications.</p>
           </div>
         </div>
         <div class="service-card">
-          <img src="machining1.jpg" alt="Precision Machining">
+          <div class="img-container">
+            <img src="machining1.jpg" alt="Precision Machining">
+            <div class="hover-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
           <div class="service-content">
             <h3>Precision Machining</h3>
             <p>High-precision milling, lathing, and machining services with guaranteed accuracy.</p>
           </div>
         </div>
         <div class="service-card">
-          <img src="assembly1.jpg" alt="Machine Assembly and Repair">
+          <div class="img-container">
+            <img src="assembly1.jpg" alt="Machine Assembly and Repair">
+            <div class="hover-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
           <div class="service-content">
             <h3>Assembly & Disassembly</h3>
             <p>Repair and reassembly of broken gears, couplings, pinions, and damaged shafts.</p>
@@ -1545,7 +1753,14 @@
         </div>
 
         <div class="service-card">
-          <img src="bending2.jpg" alt="Hydraulic Press Machine">
+          <div class="img-container">
+            <img src="bending2.jpg" alt="Hydraulic Press Machine">
+            <div class="hover-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
           <div class="service-content">
             <h3>Hydraulic Press Jobs</h3>
             <p>Expertise in high-tonnage hydraulic press work for forming, straightening, and assembly.</p>
@@ -1692,12 +1907,66 @@
       </div>
       
       <div class="gallery-grid">
-        <div class="gallery-item"><img src="fabrication2.jpg" alt="Fabrication Job"></div>
-        <div class="gallery-item"><img src="fabrication3.jpg" alt="Fabrication Job"></div>
-        <div class="gallery-item"><img src="fabrication4.jpg" alt="Fabrication Job"></div>
-        <div class="gallery-item"><img src="fabrication5.jpg" alt="Fabrication Job"></div>
-        <div class="gallery-item"><img src="fabrication6.jpg" alt="Fabrication Job"></div>
-        <div class="gallery-item"><img src="fabrication7.jpg" alt="Fabrication Job"></div>
+        <div class="gallery-item">
+          <img src="fabrication2.jpg" alt="Fabrication Job">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+              <path d="M11 8v6m-3-3h6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="fabrication3.jpg" alt="Fabrication Job">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+              <path d="M11 8v6m-3-3h6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="fabrication4.jpg" alt="Fabrication Job">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+              <path d="M11 8v6m-3-3h6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="fabrication5.jpg" alt="Fabrication Job">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+              <path d="M11 8v6m-3-3h6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="fabrication6.jpg" alt="Fabrication Job">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+              <path d="M11 8v6m-3-3h6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="fabrication7.jpg" alt="Fabrication Job">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+              <path d="M11 8v6m-3-3h6"/>
+            </svg>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -1732,7 +2001,7 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
               </svg>
-              WhatsApp
+              <span>WhatsApp</span>
             </a>
             
             <a href="mailto:united.fabricators@yahoo.in" class="contact-btn email-btn">
@@ -1740,7 +2009,7 @@
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
-              Email Us
+              <span>Email Us</span>
             </a>
           </div>
         </div>
