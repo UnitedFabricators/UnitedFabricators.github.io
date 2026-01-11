@@ -1384,24 +1384,21 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        max-width: 100%;
+        width: 85%;
+        max-width: 360px;
         height: 100vh;
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 25px;
         z-index: 2000;
         transform: translateX(-100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: none;
-        padding: 80px 40px 40px;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 10px 0 50px rgba(30, 91, 184, 0.2);
       }
       
       nav.active {
         transform: translateX(0);
-        box-shadow: 0 0 50px rgba(30, 91, 184, 0.15);
       }
       
       nav a {
@@ -1409,48 +1406,24 @@
         text-shadow: none;
         font-size: 20px;
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
-        width: 100%;
-        text-align: center;
-        padding: 15px 20px;
-        border-radius: 8px;
-        position: relative;
-      }
-      
-      nav a::before {
-        display: none;
-      }
-      
-      nav a:hover {
-        background: rgba(30, 91, 184, 0.08);
-        color: var(--primary-blue);
+        transform: translateX(-30px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
       }
       
       nav a.cta-button {
-        color: white;
-        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
-        padding: 15px 40px;
-        margin-top: 15px;
-        width: auto;
-        min-width: 200px;
-      }
-      
-      nav a.cta-button:hover {
-        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
         color: white;
       }
       
       /* Staggered link animation */
       nav.active a {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
-      nav.active a:nth-child(1) { transition-delay: 0.1s; }
-      nav.active a:nth-child(2) { transition-delay: 0.15s; }
-      nav.active a:nth-child(3) { transition-delay: 0.2s; }
-      nav.active a:nth-child(4) { transition-delay: 0.25s; }
-      nav.active a:nth-child(5) { transition-delay: 0.3s; }
+      nav.active a:nth-child(1) { transition-delay: 0.15s; }
+      nav.active a:nth-child(2) { transition-delay: 0.2s; }
+      nav.active a:nth-child(3) { transition-delay: 0.25s; }
+      nav.active a:nth-child(4) { transition-delay: 0.3s; }
+      nav.active a:nth-child(5) { transition-delay: 0.35s; }
       
       /* Hero */
       .hero { 
@@ -1806,7 +1779,7 @@
           </p>
           <p>
             <strong>Email:</strong><br>
-            <a href="/cdn-cgi/l/email-protection#b4c1daddc0d1d09ad2d5d6c6ddd7d5c0dbc6c7f4cdd5dcdbdb9addda"><span class="__cf_email__" data-cfemail="2b5e45425f4e4f054d4a495942484a5f4459586b524a434444054245">[email&#160;protected]</span></a>
+            <a href="mailto:united.fabricators@yahoo.in">united.fabricators@yahoo.in</a>
           </p>
           <p>
             <strong>Phone:</strong><br>
@@ -1823,7 +1796,7 @@
               WhatsApp
             </a>
             
-            <a href="/cdn-cgi/l/email-protection#4d382324392829632b2c2f3f242e2c39223f3e0d342c252222632423" class="contact-btn email-btn">
+            <a href="mailto:united.fabricators@yahoo.in" class="contact-btn email-btn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
@@ -1874,7 +1847,7 @@
     </svg>
   </button>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const header = document.getElementById('header');
     const logo = document.querySelector('.logo');
     const hamburger = document.getElementById('hamburger');
@@ -1915,3 +1888,20 @@
     const backToTopBtn = document.getElementById('backToTop');
     
     window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
+</body>
+</html>
