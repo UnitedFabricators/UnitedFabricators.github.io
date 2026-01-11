@@ -888,8 +888,10 @@
       pointer-events: none;
     }
     
-    .work-category {
-      margin-bottom: 70px;
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
       animation: fadeInUp 0.8s ease-out;
     }
     
@@ -902,48 +904,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-    
-    .work-category:last-of-type {
-      margin-bottom: 0;
-    }
-    
-    .work-category h3 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 38px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--primary-dark);
-      margin-bottom: 8px;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 10px;
-    }
-    
-    .work-category h3::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-cyan) 50%, transparent 100%);
-      border-radius: 2px;
-    }
-    
-    .work-category p {
-      font-size: 16px;
-      color: var(--text-light);
-      margin-top: 0;
-      margin-bottom: 35px;
-      max-width: 700px;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
     }
     
     .gallery-item {
@@ -1371,7 +1331,7 @@
     @media(max-width: 768px) {
       /* Show Hamburger */
       .hamburger { 
-        display: flex;
+        display: flex; 
       }
       
       /* Change hamburger when menu is open */
@@ -1463,14 +1423,6 @@
       .service-grid {
         grid-template-columns: 1fr;
         gap: 25px;
-      }
-      
-      .work-category {
-        margin-bottom: 50px;
-      }
-      
-      .work-category h3 {
-        font-size: 30px;
       }
       
       .contact-wrapper {
@@ -1739,26 +1691,13 @@
         <p>A gallery of our successfully completed projects and custom solutions.</p>
       </div>
       
-      <div class="work-category">
-        <h3>Fabrication Projects</h3>
-        <p>A look at our custom-built structures, frames, and heavy-duty components.</p>
-        <div class="gallery-grid">
-          <div class="gallery-item"><img src="fabrication2.jpg" alt="Fabrication Job"></div>
-          <div class="gallery-item"><img src="fabrication3.jpg" alt="Fabrication Job"></div>
-          <div class="gallery-item"><img src="fabrication4.jpg" alt="Fabrication Job"></div>
-          <div class="gallery-item"><img src="fabrication5.jpg" alt="Fabrication Job"></div>
-        </div>
-      </div>
-      
-      <div class="work-category">
-        <h3>Bending & Press Work</h3>
-        <p>Examples of precise plate, pipe, and channel bending using our press equipment.</p>
-        <div class="gallery-grid">
-          <div class="gallery-item"><img src="bending2.jpg" alt="Bending Job"></div>
-          <div class="gallery-item"><img src="bending3.jpg" alt="Bending Job"></div>
-          <div class="gallery-item"><img src="bending4.jpg" alt="Bending Job"></div>
-          <div class="gallery-item"><img src="bending5.jpg" alt="Bending Job"></div>
-        </div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="fabrication2.jpg" alt="Fabrication Job"></div>
+        <div class="gallery-item"><img src="fabrication3.jpg" alt="Fabrication Job"></div>
+        <div class="gallery-item"><img src="fabrication4.jpg" alt="Fabrication Job"></div>
+        <div class="gallery-item"><img src="fabrication5.jpg" alt="Fabrication Job"></div>
+        <div class="gallery-item"><img src="fabrication6.jpg" alt="Fabrication Job"></div>
+        <div class="gallery-item"><img src="fabrication7.jpg" alt="Fabrication Job"></div>
       </div>
 
     </section>
@@ -1807,7 +1746,6 @@
         </div>
         
         <form class="contact-form" action="https://formsubmit.co/united.fabricators@yahoo.in" method="POST">
-          <!-- FormSubmit Configuration -->
           <input type="hidden" name="_subject" value="New Quote Request from Website">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
@@ -1831,7 +1769,16 @@
     
     <section id="map">
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58926.211174768476!2d88.21322179010045!3d22.620649778361653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f883b10762a3db%3A0xe410b712b44c4efd!2sUnited%20Fabricators!5e0!3m2!1sen!2sin!4v1758304082680!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe 
+          width="100%" 
+          height="100%" 
+          src="https://maps.google.com/maps?q=United+Fabricators%20Salap%20Howrah&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          frameborder="0" 
+          scrolling="no" 
+          marginheight="0" 
+          marginwidth="0" 
+          style="filter: saturate(0.8) contrast(1.1);">
+        </iframe>
       </div>
     </section>
   </main>
@@ -1840,7 +1787,6 @@
     <p>© 2026 United Fabricators. All rights reserved.</p>
   </footer>
 
-  <!-- Back to Top Button -->
   <button id="backToTop" class="back-to-top" onclick="scrollToTop()" aria-label="Back to Top">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
       <path d="M18 15l-6-6-6 6"/>
