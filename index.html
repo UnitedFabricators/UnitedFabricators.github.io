@@ -1451,7 +1451,7 @@
       .hamburger.open div:nth-child(2) { opacity: 0; }
       .hamburger.open div:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
       
-      /* Mobile Nav Menu - ENHANCED DROPDOWN STYLE */
+      /* Mobile Nav Menu - SOLID DROPDOWN STYLE */
       nav {
         position: fixed;
         top: 0;
@@ -1459,8 +1459,7 @@
         right: 0;
         width: 100%;
         max-height: 0;
-        background: rgba(255, 255, 255, 0.55);
-        backdrop-filter: blur(20px) saturate(180%);
+        background: #ffffff;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -1468,10 +1467,10 @@
         overflow: hidden;
         transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                     padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 10px 40px rgba(30, 91, 184, 0.1);
+        box-shadow: 0 10px 40px rgba(30, 91, 184, 0.15);
         padding: 0 5%;
         margin-top: 70px;
-        border-bottom: 3px solid rgba(30, 91, 184, 0.3);
+        border-bottom: 3px solid var(--primary-blue);
       }
       
       nav.active {
