@@ -1455,29 +1455,28 @@
       nav {
         position: fixed;
         top: 0;
+        left: 0;
         right: 0;
-        width: 280px;
+        width: 100%;
         max-height: 0;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
         backdrop-filter: blur(20px) saturate(180%);
         flex-direction: column;
         justify-content: flex-start;
-        align-items: stretch;
+        align-items: center;
         z-index: 1999;
         overflow: hidden;
         transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                     padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 10px 40px rgba(30, 91, 184, 0.15);
-        padding: 0 20px;
+        padding: 0 5%;
         margin-top: 70px;
-        border-radius: 0 0 0 20px;
-        border-left: 3px solid var(--primary-blue);
         border-bottom: 3px solid var(--primary-blue);
       }
       
       nav.active {
         max-height: 420px;
-        padding: 20px;
+        padding: 20px 5%;
       }
       
       nav a {
@@ -1488,8 +1487,9 @@
         transform: translateX(30px);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 12px 20px;
-        width: 100%;
-        text-align: left;
+        width: auto;
+        max-width: 300px;
+        text-align: center;
         border-radius: 10px;
         margin: 3px 0;
         font-weight: 600;
