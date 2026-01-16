@@ -6,6 +6,9 @@
   <title>United Fabricators - Modern Industrial Solutions</title>
   <meta name="description" content="United Fabricators - Built on Trust, Crafted with Excellence. Specialists in Fabrication, Welding, Machining, Hydraulic Press Jobs, Gear Extraction and more.">
   
+  <!-- Preload hero image for faster loading -->
+  <link rel="preload" as="image" href="hero1.jpg">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -229,7 +232,16 @@
       color: white;
       position: relative;
       overflow: hidden;
-      background: url('hero1.jpg') no-repeat center center/cover;
+      /* Fallback gradient while image loads */
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+    }
+    
+    /* Image will be loaded via JavaScript for better control */
+    .hero.loaded {
+      background-image: url('hero1.jpg');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     
     .hero::after {
@@ -1698,7 +1710,7 @@
       <div class="service-grid">
         <div class="service-card">
           <div class="img-container">
-            <img src="fabrication1.jpg" alt="Custom Metal Fabrication">
+            <img src="fabrication1.jpg" alt="Custom Metal Fabrication" loading="lazy">
             <div class="hover-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1712,7 +1724,7 @@
         </div>
         <div class="service-card">
           <div class="img-container">
-            <img src="welding1.jpg" alt="Certified Welding">
+            <img src="welding1.jpg" alt="Certified Welding" loading="lazy">
             <div class="hover-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1727,7 +1739,7 @@
         
         <div class="service-card">
           <div class="img-container">
-            <img src="bending1.jpg" alt="Plate and Pipe Bending">
+            <img src="bending1.jpg" alt="Plate and Pipe Bending" loading="lazy">
             <div class="hover-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1741,7 +1753,7 @@
         </div>
         <div class="service-card">
           <div class="img-container">
-            <img src="machining1.jpg" alt="Precision Machining">
+            <img src="machining1.jpg" alt="Precision Machining" loading="lazy">
             <div class="hover-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1755,7 +1767,7 @@
         </div>
         <div class="service-card">
           <div class="img-container">
-            <img src="assembly1.jpg" alt="Machine Assembly and Repair">
+            <img src="assembly1.jpg" alt="Machine Assembly and Repair" loading="lazy">
             <div class="hover-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1770,7 +1782,7 @@
 
         <div class="service-card">
           <div class="img-container">
-            <img src="bending2.jpg" alt="Hydraulic Press Machine">
+            <img src="bending2.jpg" alt="Hydraulic Press Machine" loading="lazy">
             <div class="hover-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1831,7 +1843,7 @@
           </div>
           <h3>Quality Assurance</h3>
           <p>Rigorous quality checks at every stage ensure durability and precision in all our fabrication work.</p>
-        </div>
+          </div>
         
         <div class="feature-card">
           <div class="feature-icon">
@@ -1864,49 +1876,49 @@
       <div class="clients-grid">
         <div class="client-box">
           <div class="client-logo-placeholder">
-            <img src="client1.png" alt="Client 1">
+            <img src="client1.png" alt="Client 1" loading="lazy">
           </div>
         </div>
         
         <div class="client-box">
           <div class="client-logo-placeholder">
-            <img src="client2.png" alt="Client 2">
+            <img src="client2.png" alt="Client 2" loading="lazy">
           </div>
         </div>
         
         <div class="client-box">
           <div class="client-logo-placeholder">
-            <img src="client3.png" alt="Client 3">
+            <img src="client3.png" alt="Client 3" loading="lazy">
           </div>
         </div>
         
         <div class="client-box">
           <div class="client-logo-placeholder">
-            <img src="client4.png" alt="Client 4">
+            <img src="client4.png" alt="Client 4" loading="lazy">
           </div>
         </div>
         
         <div class="client-box">
           <div class="client-logo-placeholder">
-            <img src="client5.png" alt="Client 5">
+            <img src="client5.png" alt="Client 5" loading="lazy">
           </div>
         </div>
         
         <div class="client-box">
           <div class="client-logo-placeholder">
-            <img src="client6.png" alt="Client 6">
+            <img src="client6.png" alt="Client 6" loading="lazy">
           </div>
         </div>
         
         <div class="client-box">
           <div class="client-logo-placeholder">
-            <img src="client7.png" alt="Client 7">
+            <img src="client7.png" alt="Client 7" loading="lazy">
           </div>
         </div>
         
         <div class="client-box">
           <div class="client-logo-placeholder">
-            <img src="client8.png" alt="Client 8">
+            <img src="client8.png" alt="Client 8" loading="lazy">
           </div>
         </div>
       </div>
@@ -1924,7 +1936,7 @@
       
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="fabrication2.jpg" alt="Fabrication Job">
+          <img src="fabrication2.jpg" alt="Fabrication Job" loading="lazy">
           <div class="zoom-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"/>
@@ -1934,7 +1946,7 @@
           </div>
         </div>
         <div class="gallery-item">
-          <img src="fabrication3.jpg" alt="Fabrication Job">
+          <img src="fabrication3.jpg" alt="Fabrication Job" loading="lazy">
           <div class="zoom-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"/>
@@ -1944,7 +1956,7 @@
           </div>
         </div>
         <div class="gallery-item">
-          <img src="fabrication3.jpg" alt="Fabrication Job">
+          <img src="fabrication3.jpg" alt="Fabrication Job" loading="lazy">
           <div class="zoom-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"/>
@@ -1954,7 +1966,7 @@
           </div>
         </div>
         <div class="gallery-item">
-          <img src="fabrication5.jpg" alt="Fabrication Job">
+          <img src="fabrication5.jpg" alt="Fabrication Job" loading="lazy">
           <div class="zoom-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"/>
@@ -1964,7 +1976,7 @@
           </div>
         </div>
         <div class="gallery-item">
-          <img src="fabrication6.jpg" alt="Fabrication Job">
+          <img src="fabrication6.jpg" alt="Fabrication Job" loading="lazy">
           <div class="zoom-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"/>
@@ -1974,7 +1986,7 @@
           </div>
         </div>
         <div class="gallery-item">
-          <img src="fabrication7.jpg" alt="Fabrication Job">
+          <img src="fabrication7.jpg" alt="Fabrication Job" loading="lazy">
           <div class="zoom-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"/>
@@ -2062,7 +2074,8 @@
           scrolling="no" 
           marginheight="0" 
           marginwidth="0" 
-          style="filter: saturate(0.8) contrast(1.1);">
+          style="filter: saturate(0.8) contrast(1.1);"
+          loading="lazy">
         </iframe>
       </div>
     </section>
@@ -2084,6 +2097,16 @@
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navbar');
     const overlay = document.getElementById('overlay');
+
+    // Preload hero image for faster loading
+    window.addEventListener('DOMContentLoaded', () => {
+      const heroSection = document.querySelector('.hero');
+      const img = new Image();
+      img.src = 'hero1.jpg';
+      img.onload = () => {
+        heroSection.classList.add('loaded');
+      };
+    });
 
     // 1. Header Scroll Effect
     window.addEventListener('scroll', () => {
