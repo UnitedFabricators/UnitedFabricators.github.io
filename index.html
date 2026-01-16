@@ -1451,7 +1451,7 @@
       .hamburger.open div:nth-child(2) { opacity: 0; }
       .hamburger.open div:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
       
-      /* Mobile Nav Menu - BLUE DROPDOWN STYLE */
+      /* Mobile Nav Menu - BLUE DROPDOWN STYLE WITH WHITE TEXT AND LEFT ALIGNMENT */
       nav {
         position: fixed;
         top: 0;
@@ -1462,7 +1462,7 @@
         background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         z-index: 1999;
         overflow: hidden;
         transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -1474,21 +1474,21 @@
       }
       
       nav.active {
-        max-height: 250px;
-        padding: 10px 5%;
+        max-height: 280px;
+        padding: 15px 5%;
       }
       
       nav a {
         color: white;
         text-shadow: none;
-        font-size: 10px;
+        font-size: 13px;
         opacity: 0;
         transform: translateY(-10px);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 8px 18px;
+        padding: 12px 20px;
         width: 100%;
         max-width: 100%;
-        text-align: center;
+        text-align: left;
         border-radius: 0;
         margin: 0;
         font-weight: 600;
@@ -1496,10 +1496,14 @@
         position: relative;
         overflow: visible;
         line-height: 1.3;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       }
       
-      /* Remove border from CTA button */
+      /* Remove border from last regular link and CTA button */
+      nav a:nth-last-child(2) {
+        border-bottom: none;
+      }
+      
       nav a.cta-button {
         border-bottom: none;
       }
@@ -1524,23 +1528,23 @@
       
       nav a:hover {
         color: var(--accent-cyan);
-        transform: translateY(0) scale(1.02);
+        transform: translateY(0) translateX(5px);
       }
       
       
       nav a.cta-button {
         color: white;
         background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-light-blue) 100%);
-        margin-top: 8px;
-        margin-bottom: 4px;
-        padding: 8px 16px;
+        margin-top: 12px;
+        margin-bottom: 0;
+        padding: 12px 24px;
         text-align: center;
         box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
-        font-size: 10px;
+        font-size: 13px;
         border-bottom: none;
-        border-radius: 5px;
+        border-radius: 8px;
         width: auto;
-        max-width: 180px;
+        align-self: flex-start;
       }
       
       nav a.cta-button::before {
@@ -1549,7 +1553,7 @@
       
       nav a.cta-button:hover {
         background: linear-gradient(135deg, var(--accent-light-blue) 0%, var(--accent-cyan) 100%);
-        transform: translateY(0) scale(1.02);
+        transform: translateY(0) translateX(5px);
         box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
       }
       
